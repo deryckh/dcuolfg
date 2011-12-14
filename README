@@ -1,5 +1,13 @@
-========
-DCUO LFG
+=======
+MMO LFG
 ========
 
-A LFG tool for DC Universe Online.
+An LFG tool for MMOs.
+
+This code will be used to build a similarly named site, DCUO LFG.
+There's no reason it couldn't power any social LFG-type site, but
+it will be used to build a site for DCUO primarily.
+
+Frankly, I play DCUO a lot and it really needs a better LFG too.
+Let's see if the web and this code can conspire to provide this
+missing functionality.

@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 __version__ = '0.1'
 
 setup(
-    name = 'dcuolfg',
+    name = 'mmolfg',
     version = __version__,
     packages = find_packages('src'),
     package_dir = {'': 'src'},
