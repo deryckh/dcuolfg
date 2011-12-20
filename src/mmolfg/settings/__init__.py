@@ -1,15 +1,11 @@
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+"""
+Settings.
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'sqlite3',
-        'NAME': '/tmp/mmolfg.db',
-    }
-}
+Eventually settings will be broken out into common,
+devel, and deploy settings.
 
-ROOT_URLCONF = 'mmolfg.urls'
+For now, keep the common settings to make dev quicker
+and easier.
+"""
 
-INSTALLED_APPS = (
-    'mmolfg',
-)
+from mmolfg.settings.common import *
