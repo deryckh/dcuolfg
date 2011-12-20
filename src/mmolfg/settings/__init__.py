@@ -8,6 +8,8 @@ DATABASES = {
     }
 }
 
+ROOT_URLCONF = 'mmolfg.urls'
+
 INSTALLED_APPS = (
     'mmolfg',
 )
