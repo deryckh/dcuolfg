@@ -1,0 +1,30 @@
+===========
+Simple TODO
+===========
+
+** Site structure
+
+    Need a basic site/directory layout:
+        * Homepage
+        * User page
+        * Character page (possibly)
+        * LFG tool itself
+
+
+** Core Objects
+
+    Need objects to represent:
+        * Characters
+        * Leagues
+        * Missions (or instances, alerts, raids, etc.)
+
+
+
+Story:
+
+I come to the homepage and see latest people looking for groups
+on DCUO.  I can browse by role, event, or time available.  I can
+shout in world or schedule in site calendar.  I can +1 and
+comment about toons I liked running with.
+
+(Seems like this is more toon-based then event-based.)
