@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>MMOFLG -- Work in Progress</title>
-        <style type="text/css">
-            /* Only to "see" the header. */
-            #header {background: yellow; height: 35px;}
-        </style>
-    </head>
-    <body>
-        <div id="header">
-            {% if user.is_authenticated %}
-                <p>We have an auth'ed user.</p>
-            {% else %}
-                <p>We do <strong>NOT</strong> have an auth'ed user.</p>
-            {% endif %}
-        </div>
+{% extends "base.html" %}
+    {% block title %}MMOFLG -- Work in Progress{% endblock title %}
+    {% block header %}
+        {% if user.is_authenticated %}
+            <p>We have an auth'ed user.</p>
+        {% else %}
+            <p>We do <strong>NOT</strong> have an auth'ed user.</p>
+        {% endif %}
+    {% endblock header %}
+    {% block content %}
         <h1>Success!!</h1>
         <p>Now what?!</p>
-    </body>
-</html>
+    {% endblock content %}

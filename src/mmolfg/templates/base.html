@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        <style type="text/css">
+            /* Only to "see" the header. */
+            #header {background: yellow; height: 35px;}
+        </style>
+    </head>
+    <body>
+        <div id="header">{% block header %}{% endblock header %}</div>
+        {% block content %}{% endblock content %}
+    </body>
+</html>
