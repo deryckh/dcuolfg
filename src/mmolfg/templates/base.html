@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{% block title %}{% endblock title %}</title>
-        <style type="text/css">
-            /* Only to "see" the header. */
-            #header {background: yellow; height: 35px;}
-        </style>
-    </head>
-    <body>
-        <div id="header">{% block header %}{% endblock header %}</div>
-        {% block content %}{% endblock content %}
-    </body>
+  <head>
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
+  </head>
+  <body>
+    <div id="header">{% block header %}{% endblock header %}</div>
+    {% block content %}{% endblock content %}
+  </body>
 </html>
