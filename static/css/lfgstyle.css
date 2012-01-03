@@ -11,3 +11,32 @@ body {
   font-size: small;
   line-height: 130%;
 }
+a,
+a:link {
+  color: #20C3FF;
+  text-decoration: none;
+}
+a:link:hover,
+a:visited:hover {
+  text-decoration: underline;
+}
+
+/* Colors
+ * Darkest: #020C15
+ * Medium-dark: #022D4D
+ * Medium-light: #006097
+ * Lightest: #009DD8
+ *
+ * Green:  #98F153
+ * White-blue: #BDE7FD;
+ */
+/** Sections ************************/
+#header {
+  height: 30px;
+  background-color: #006097;
+  text-align: right;
+  line-height: 250%;
+  padding: 0 10px;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #BDE7FD;
+}
