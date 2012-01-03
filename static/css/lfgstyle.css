@@ -10,6 +10,23 @@ body {
   font-weight: normal;
   font-size: small;
   line-height: 130%;
+  text-align: center;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-align: left;
+  letter-spacing: 0.05em;
+}
+h1 {
+  font-size: x-large;
+}
+h2 {
+  font-size: large;
+}
+h3 {
+  font-size: medium;
+}
+p {
+  text-align: left;
 }
 a,
 a:link {
@@ -19,6 +36,12 @@ a:link {
 a:link:hover,
 a:visited:hover {
   text-decoration: underline;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-style: bold;
 }
 
 /* Colors
@@ -52,7 +75,14 @@ a:visited:hover {
 }
 #blurb p {
   width: 70%;
-  text-align: left;
   line-height: 175%;
   margin: 30px 0 0 25px;
+}
+.blurb-row {
+  height: 350px;
+  width: 95%;
+  background-color: #009DD8;
+  border: 1px solid #BDE7FD;
+  margin: 0 auto 5px auto;
+  padding: 10px;
 }
