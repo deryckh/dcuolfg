@@ -50,8 +50,11 @@ strong {
  * Medium-light: #006097
  * Lightest: #009DD8
  *
+ * Link: #20C3FF
+ *
  * Green:  #98F153
  * White-blue: #BDE7FD;
+ * Red: #CE0014
  */
 
 /** Sections ************************/
@@ -63,6 +66,11 @@ strong {
   padding: 0 10px;
   margin: 0 0 10px 0;
   border-bottom: 1px solid #BDE7FD;
+}
+
+/** General stylistic flourishes ***/
+.bggrade {
+    background-image: -webkit-linear-gradient(top, #009DD8, #022D4D);
 }
 
 /** Content ************************/
@@ -85,4 +93,12 @@ strong {
   border: 1px solid #BDE7FD;
   margin: 0 auto 5px auto;
   padding: 10px;
+}
+h2.headline {
+  width: 100px;
+  float: right;
+  position: relative;
+  left: 30px;
+  background: #CE0014;
+  padding: 3px 15px 3px 10px;
 }
