@@ -3,7 +3,11 @@
  */
 
 body {
-    background-color: #020C15;
-    color: #FFF;
-    width:100%;
+  background-color: #020C15;
+  color: #FFF;
+  width:100%;
+  font-family: Helvetica, Arial, Tahoma, sans-serif;
+  font-weight: normal;
+  font-size: small;
+  line-height: 130%;
 }
