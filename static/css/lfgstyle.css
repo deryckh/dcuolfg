@@ -70,7 +70,8 @@ strong {
 
 /** General stylistic flourishes ***/
 .bggrade {
-    background-image: -webkit-linear-gradient(top, #009DD8, #022D4D);
+  /** XXX: still need to fix this for all browser. */
+  background-image: -webkit-linear-gradient(top, #009DD8, #022D4D);
 }
 
 /** Content ************************/
