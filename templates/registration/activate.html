@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}Account Activated | {% endblock %}
+
+{% block content %}
+  <div class="entry">
+    {% if account %}
+    <h2>Account Activated</h2>
+    <p>You can now <a href="/accounts/login/">log in</a>.</p>
+  {% else %}
+    <h2>Activation Error</h2>
+    <p>Either your activation link was incorrect, or the activation
+    token for your account has expired; activation tokens are
+    valid for {{ expiration_days|apnumber }} days.</p>
+  {% endif %}
+  </div>
+{% endblock %}
+
+{% comment %}
+  Kill the sidebar since we don't need the promo link
+  from an actual promo page.
+{% endcomment %}
+{% block sidebar %}{% endblock %}
+

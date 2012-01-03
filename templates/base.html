@@ -14,7 +14,8 @@
         {% if user.is_authenticated %}
             <span class="user">{{ user.username }}</span>
         {% else %}
-            <a href="/login/">Login</a> | <a href="/register/">Create Account</a>
+            <a href="/accounts/login/">Login</a> |
+            <a href="/accounts/register/">Create Account</a>
         {% endif %}
         {% block header %}{% endblock header %}
     </div>

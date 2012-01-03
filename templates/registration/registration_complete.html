@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Complete | {% endblock %}
+
+{% block content %}
+  <div class="entry">
+    <h1>Check your email</h1>
+    <p>An activation link has been sent to the email address you provided.</p>
+  </div>
+{% endblock %}
+
+{% comment %}
+  Kill the sidebar since we don't need the promo link
+  from an actual promo page.
+{% endcomment %}
+{% block sidebar %}{% endblock %}
