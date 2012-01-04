@@ -96,10 +96,11 @@ strong {
   padding: 10px;
 }
 h2.headline {
-  width: 100px;
-  float: right;
   position: relative;
-  left: 30px;
+  left: -30px;
+  width: 110px;
   background: #CE0014;
-  padding: 3px 15px 3px 10px;
+  text-align: right;
+  line-height: 130%;
+  padding: 0 5px 0 0;
 }
