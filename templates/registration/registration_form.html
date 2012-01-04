@@ -1,18 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Join Heroes Sightings | {% endblock %}
-
 {% block content %}
-  <div class="entry">
-    <p><strong>Very good!</strong>  It seems you have successfully 
-	  found your way inside.</p>
-
-    <p>If you wish to create an account here, you can join with others
-    like yourself who either have a deep interest in people with special
-    abilities or are themselves ordinary humans with extraordinary talents.</p>
-    
-    <div id="regf">
-      <h2>Join Heroes Sightings</h2>
+  <div class="yui3-g" id="register">
+    <div class="yui3-u-1-5"></div>
+    <div class="yui3-u-1-5">
+      <h2 class="headline">Create an Account</h2>
       <form action="." method="post">
         {% if form.errors %}
         <p class="error">{{ form.non_field_errors }}</p>
@@ -41,18 +33,16 @@
             <p class="error">{{ form.password2.errors.as_text }}</p>
           {% endif %}
           {{ form.password2 }}</p>
-
-          <p><input type="submit" value="Activate"></p>
-      </form>      
+          <p><input type="submit" value="Create Account"></p>
+      </form>
     </div>
-
-
+    <div class="yui3-u-3-5">
+        {% include "logo.html" %}
+    </div>
   </div>
 {% endblock %}
 
 {% comment %}
-  Kill the sidebar since we don't need the promo link
-  from an actual promo page.
+    Clear accounts from heading since we're logging in.
 {% endcomment %}
-{% block sidebar %}{% endblock %}
-
+{% block account %}{% endblock account %}

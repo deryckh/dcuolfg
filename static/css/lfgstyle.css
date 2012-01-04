@@ -14,7 +14,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
   text-align: left;
-  letter-spacing: 0.05em;
+  margin: 5px;
 }
 h1 {
   font-size: x-large;
@@ -42,6 +42,18 @@ em {
 }
 strong {
   font-style: bold;
+}
+img {
+  margin: auto;
+}
+form {
+  margin: 5px;
+}
+form label {
+  display: block;
+}
+form input {
+  margin: 0 0 10px 0;
 }
 
 /* Colors
@@ -72,15 +84,13 @@ strong {
 .bggrade {
   /** XXX: still need to fix this for all browser. */
   background-image: -webkit-linear-gradient(top, #009DD8, #022D4D);
+  background-image: -moz-linear-gradient(top, #009DD8, #022D4D);
 }
 
 /** Content ************************/
 #blurb {
   text-align: right;
   padding: 0 0 25px 0;
-}
-#blurb img {
-  margin: auto;
 }
 #blurb p {
   width: 70%;
@@ -98,9 +108,12 @@ strong {
 h2.headline {
   position: relative;
   left: -30px;
-  width: 110px;
+  display: table;
   background: #CE0014;
   text-align: right;
-  line-height: 130%;
-  padding: 0 5px 0 0;
+  line-height: 120%;
+  padding: 1px 5px 0 30px;
+}
+#register img {
+  float: left;
 }

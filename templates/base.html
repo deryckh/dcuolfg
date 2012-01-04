@@ -11,13 +11,14 @@
   </head>
   <body>
     <div id="header" class="yui-g">
+      {% block account %}
         {% if user.is_authenticated %}
             <span class="user">{{ user.username }}</span>
         {% else %}
-            <a href="/accounts/login/">Login</a> |
-            <a href="/accounts/register/">Create Account</a>
+            <a href="/accounts/register/">Create Account</a> |
+            <a href="/accounts/login/">Login</a>
         {% endif %}
-        {% block header %}{% endblock header %}
+      {% endblock account %}
     </div>
     <div id="main">
     {% block content %}{% endblock content %}
