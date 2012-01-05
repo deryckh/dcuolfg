@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="yui3-g" id="register">
+    <div class="yui3-u-1-5"></div>
+    <div class="yui3-u-1-5">
+      <h2 class="headline">Create an Account</h2>
+      <form action="." method="post">
+        {% if form.errors %}
+        <span class="error">{{ form.non_field_errors }}</span>
+        <br />
+        {% endif %}
+
+        <p><label for="id_username">Username:</label>
+        {% if form.username.errors %}
+        <span class="error">{{ form.username.errors.as_text }}</span>
+        <br />
+        {% endif %}
+        {{ form.username }}</p>
+
+        <p><label for="id_email">Email:</label>
+          {% if form.email.errors %}
+            <span class="error">{{ form.email.errors.as_text }}</span>
+            <br />
+          {% endif %}
+          {{ form.email }}</p>
+
+        <p><label for="id_password1">Password:</label>
+          {% if form.password1.errors %}
+            <span class="error">{{ form.password1.errors.as_text }}</span>
+            <br />
+          {% endif %}
+          {{ form.password1 }}</p>
+
+          <p><label for="id_password2">Password (again):</label>
+          {% if form.password2.errors %}
+            <span class="error">{{ form.password2.errors.as_text }}</span>
+            <br />
+          {% endif %}
+          {{ form.password2 }}</p>
+          <p><input type="submit" value="Create Account"></p>
+      </form>
+    </div>
+    <div class="yui3-u-3-5">
+        {% include "logo.html" %}
+    </div>
+  </div>
+{% endblock %}
+
+{% comment %}
+    Clear accounts from heading since we're logging in.
+{% endcomment %}
+{% block account %}{% endblock account %}

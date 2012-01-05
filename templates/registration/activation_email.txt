@@ -1,0 +1,7 @@
+{% load humanize %}
+
+Thanks for requesting an account at DCUO LFG.  To activate your account, please visit the link below (or copy-n-paste the link into your web browser if it is not clickable).
+
+http://dcuolfg.com/accounts/activate/{{ activation_key }}/
+
+If you did *NOT* request an account on DCUO LFG, please ignore this email.  You will not receive any more email from us and the account request will expire in {{ expiration_days|apnumber }} days.

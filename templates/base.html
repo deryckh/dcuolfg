@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/3.4.1/build/cssgrids/grids-min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ MEDIA_URL }}/css/lfgstyle.css">
+  </head>
+  <body>
+    <div id="wrap">
+    <div id="header" class="yui-g">
+      {% block account %}
+        {% if user.is_authenticated %}
+            <a href="/accounts/profile/">{{ user.username }}</a> |
+            <a href="/accounts/logout">Logout</a>
+        {% else %}
+            <a href="/accounts/register/">Create Account</a> |
+            <a href="/accounts/login/">Login</a>
+        {% endif %}
+      {% endblock account %}
+    </div>
+    <div id="main">
+    {% block content %}{% endblock content %}
+    </div>
+    </div>
+  </body>
+</html>

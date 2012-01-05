@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+    {% block title %}MMOFLG -- Work in Progress{% endblock title %}
+    {% block content %}
+        {% if user.is_authenticated %}
+            {% include "homepage-user.html" %}
+        {% else %}
+            {% include "homepage-anonymous.html" %}
+        {% endif %}
+    {% endblock content %}
