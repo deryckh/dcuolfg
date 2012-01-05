@@ -14,7 +14,8 @@
     <div id="header" class="yui-g">
       {% block account %}
         {% if user.is_authenticated %}
-            <span class="user">{{ user.username }}</span>
+            <a href="/accounts/profile/">{{ user.username }}</a> |
+            <a href="/accounts/logout">Logout</a>
         {% else %}
             <a href="/accounts/register/">Create Account</a> |
             <a href="/accounts/login/">Login</a>

@@ -1,22 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Logged out | {% endblock %}
-
 {% block content %}
-  <div class="entry">
-    <h2>You have been successfully logged out.</h2>
-    <p>Thanks for your work here on Heroes Sightings.
-     When you return, don't forget to
-     <a href="/accounts/login/">log in</a> again.</p>
-
-	<p>Back to <a href="/">the Heroes Sightings
-	homepage</a>.</p>
+  <div class="yui3-g" id="register">
+    <div class="yui3-u-1-5"></div>
+    <div class="yui3-u-3-5">
+      <h2 class="headline">You have been successfully logged out.</h2>
+      <p>Return to <a href="/">DCUO LFG</a>.</p>
+     </div>
+    <div class="yui3-u-1-5"></div>
   </div>
 {% endblock %}
-
-{% comment %}
-  Kill the sidebar since we don't need the promo link
-  from an actual promo page.
-{% endcomment %}
-{% block sidebar %}{% endblock %}
-
