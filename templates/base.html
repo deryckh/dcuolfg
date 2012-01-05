@@ -10,6 +10,7 @@
         href="{{ MEDIA_URL }}/css/lfgstyle.css">
   </head>
   <body>
+    <div id="wrap">
     <div id="header" class="yui-g">
       {% block account %}
         {% if user.is_authenticated %}
@@ -22,6 +23,7 @@
     </div>
     <div id="main">
     {% block content %}{% endblock content %}
+    </div>
     </div>
   </body>
 </html>

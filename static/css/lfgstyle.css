@@ -2,10 +2,13 @@
  * Style rules for DCUO LFG.
  */
 
+html {
+  height: 100%;
+}
 body {
-  background-color: #020C15;
   color: #FFF;
   width:100%;
+  height: 100%;
   font-family: Helvetica, Arial, Tahoma, sans-serif;
   font-weight: normal;
   font-size: small;
@@ -79,6 +82,10 @@ form input {
   margin: 0 0 10px 0;
   border-bottom: 1px solid #BDE7FD;
 }
+#wrap {
+  min-height: 100%;
+  background-color: #020C15;
+}
 
 /** General stylistic flourishes ***/
 .bggrade {
@@ -116,4 +123,7 @@ h2.headline {
 }
 #register img {
   float: left;
+}
+.error {
+  color: red;
 }
