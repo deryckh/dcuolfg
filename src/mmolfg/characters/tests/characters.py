@@ -35,3 +35,9 @@ class TestCharacterAttributes(unittest.TestCase):
         """Characters cannot be created with blank names."""
         toon = Character(name='')
         self.assertRaises(ValidationError, toon.full_clean)
+
+    def test_server(self):
+        """Each Character lives on a server."""
+        server = 0  # USPS3 enum value
+        toon = Character(name='foobar', server=server)
+        self.assertEqual(server, toon.server)
