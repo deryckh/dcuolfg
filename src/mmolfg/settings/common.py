@@ -38,5 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'registration',
-    'mmolfg',
+    'mmolfg.accounts',
+    'mmolfg.characters',
 )
