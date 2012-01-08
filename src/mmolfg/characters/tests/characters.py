@@ -29,15 +29,22 @@ class TestCharacterAttributes(unittest.TestCase):
             'thisisareaallylongname'
             'fhenjnndeukabandnjndehbdehbhdbehbdehbhdbjndejnjdnejndjendj')
         toon = Character(name=name, server=0)
-        self.assertRaisesRegexp(
-            ValidationError, 'Ensure this value has at most 75 characters',
-            toon.full_clean)
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = (
+            'Ensure this value has at most 75 characters '
+            '(it has 80).')
+        message_list = err.exception.message_dict.get('name')
+        self.assertEqual(expected_message, message_list[0])
 
     def test_character_name_blank(self):
         """Characters cannot be created with blank names."""
         toon = Character(name='', server=0)
-        self.assertRaisesRegexp(
-            ValidationError, 'This field cannot be blank', toon.full_clean)
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = 'This field cannot be blank.'
+        message_list = err.exception.message_dict.get('name')
+        self.assertEqual(expected_message, message_list[0])
 
     def test_character_name_allows_space(self):
         """Characters can have names with spaces in them."""
@@ -48,7 +55,7 @@ class TestCharacterAttributes(unittest.TestCase):
 
     def test_server(self):
         """Each Character lives on a server."""
-        server = 0  # USPS3 enum value
+        server = 0
         toon = Character(name='foobar', server=server)
         self.assertEqual(server, toon.server)
 
