@@ -19,6 +19,7 @@ class Character(models.Model):
     name = models.CharField(max_length=75)
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
     player = models.ForeignKey(User, related_name='characters')
+    description = models.TextField(blank=True)
 
     ## XXX: Running total of things to add:
     #
