@@ -87,3 +87,16 @@ class TestCharacterAttributes(unittest.TestCase):
         expected_toons = [toon, another_toon]
         actual_toons = list(player.characters.all())
         self.assertEqual(expected_toons.sort(), actual_toons.sort())
+
+    def test_description(self):
+        """A Character can have a description."""
+        player = self.make_player()
+        toon = Character(name='My SuperDude', server=0, player=player)
+        description = """
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim veniam, quis nostrud exercitation ullamco."""
+        toon.description = description
+        toon.save()
+        updated_toon = Character.objects.filter(name='My SuperDude')[0]
+        self.assertEqual(description, updated_toon.description)
