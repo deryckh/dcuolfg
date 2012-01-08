@@ -51,3 +51,12 @@ class TestCharacterAttributes(unittest.TestCase):
         server = 0  # USPS3 enum value
         toon = Character(name='foobar', server=server)
         self.assertEqual(server, toon.server)
+
+    def test_server_required(self):
+        """You should not be able to create a chracter without a server."""
+        toon = Character(name='foobar')
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = 'This field cannot be null.'
+        message_list = err.exception.message_dict.get('server')
+        self.assertEqual(expected_message, message_list[0])
