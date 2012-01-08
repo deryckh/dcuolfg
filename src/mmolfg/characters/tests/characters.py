@@ -5,6 +5,7 @@ Tests for Character objects in mmolfg.
 import unittest
 
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 from mmolfg.characters.models import Character
 
@@ -17,6 +18,12 @@ class TestCharacterAttributes(unittest.TestCase):
     the Character object's API.
     """
 
+    def make_player(self):
+        """Helper method for creating a User who is the player"""
+        player = User(username='player')
+        player.save()
+        return player
+
     def test_character_name(self):
         """Each Character instance should have a name attribute."""
         name = 'superdoopertoon'
@@ -28,7 +35,8 @@ class TestCharacterAttributes(unittest.TestCase):
         name = (
             'thisisareaallylongname'
             'fhenjnndeukabandnjndehbdehbhdbehbdehbhdbjndejnjdnejndjendj')
-        toon = Character(name=name, server=0)
+        player = self.make_player()
+        toon = Character(name=name, server=0, player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
         expected_message = (
@@ -39,7 +47,8 @@ class TestCharacterAttributes(unittest.TestCase):
 
     def test_character_name_blank(self):
         """Characters cannot be created with blank names."""
-        toon = Character(name='', server=0)
+        player = self.make_player()
+        toon = Character(name='', server=0, player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
         expected_message = 'This field cannot be blank.'
@@ -49,7 +58,8 @@ class TestCharacterAttributes(unittest.TestCase):
     def test_character_name_allows_space(self):
         """Characters can have names with spaces in them."""
         name = 'Captain DjangoHacker'
-        toon = Character(name=name, server=0)
+        player = self.make_player()
+        toon = Character(name=name, server=0, player=player)
         toon.full_clean()
         self.assertEqual(name, toon.name)
 
@@ -61,9 +71,16 @@ class TestCharacterAttributes(unittest.TestCase):
 
     def test_server_required(self):
         """You should not be able to create a chracter without a server."""
-        toon = Character(name='foobar')
+        player = self.make_player()
+        toon = Character(name='foobar', player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
         expected_message = 'This field cannot be null.'
         message_list = err.exception.message_dict.get('server')
         self.assertEqual(expected_message, message_list[0])
+
+    def test_player(self):
+        """Each Character should have a player attribute."""
+        fred = User(username='fred')
+        toon = Character(name='Gazorbeam', server=0, player=fred)
+        self.assertEqual(fred, toon.player)
