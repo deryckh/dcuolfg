@@ -28,13 +28,23 @@ class TestCharacterAttributes(unittest.TestCase):
         name = (
             'thisisareaallylongname'
             'fhenjnndeukabandnjndehbdehbhdbehbdehbhdbjndejnjdnejndjendj')
-        toon = Character(name=name)
-        self.assertRaises(ValidationError, toon.full_clean)
+        toon = Character(name=name, server=0)
+        self.assertRaisesRegexp(
+            ValidationError, 'Ensure this value has at most 75 characters',
+            toon.full_clean)
 
     def test_character_name_blank(self):
         """Characters cannot be created with blank names."""
-        toon = Character(name='')
-        self.assertRaises(ValidationError, toon.full_clean)
+        toon = Character(name='', server=0)
+        self.assertRaisesRegexp(
+            ValidationError, 'This field cannot be blank', toon.full_clean)
+
+    def test_character_name_allows_space(self):
+        """Characters can have names with spaces in them."""
+        name = 'Captain DjangoHacker'
+        toon = Character(name=name, server=0)
+        toon.full_clean()
+        self.assertEqual(name, toon.name)
 
     def test_server(self):
         """Each Character lives on a server."""
