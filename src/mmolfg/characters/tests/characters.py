@@ -11,17 +11,11 @@ from mmolfg.characters.models import Character
 
 
 class TestCharacterAttributes(unittest.TestCase):
-    """Tests to ensure expected attributes for Character objects.
-
-    Do not call save or use Character.objects.create (which calls
-    save).  This avoids saving to DB, since we're just checking
-    the Character object's API.
-    """
+    """Tests to ensure expected attributes for Character objects."""
 
     def make_player(self):
         """Helper method for creating a User who is the player"""
-        player = User(username='player')
-        player.save()
+        player, just_created = User.objects.get_or_create(username='player')
         return player
 
     def test_character_name(self):
@@ -84,3 +78,12 @@ class TestCharacterAttributes(unittest.TestCase):
         fred = User(username='fred')
         toon = Character(name='Gazorbeam', server=0, player=fred)
         self.assertEqual(fred, toon.player)
+
+    def test_player_has_chracters(self):
+        """Every user who is a player should have characters."""
+        player = self.make_player()
+        toon = Character(name='funbar foo', server=0, player=player)
+        another_toon = Character(name='flexbar fofo', server=0, player=player)
+        expected_toons = [toon, another_toon]
+        actual_toons = list(player.characters.all())
+        self.assertEqual(expected_toons.sort(), actual_toons.sort())
