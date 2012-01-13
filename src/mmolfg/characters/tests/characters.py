@@ -88,6 +88,11 @@ class TestCharacterAttributes(unittest.TestCase):
         actual_toons = list(player.characters.all())
         self.assertEqual(expected_toons.sort(), actual_toons.sort())
 
+    def test_character_without_description(self):
+        """Characters can be created without a description."""
+        toon = Character()
+        self.assertEqual('', toon.description)
+
     def test_description(self):
         """A Character can have a description."""
         player = self.make_player()
@@ -97,6 +102,4 @@ class TestCharacterAttributes(unittest.TestCase):
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
             enim ad minim veniam, quis nostrud exercitation ullamco."""
         toon.description = description
-        toon.save()
-        updated_toon = Character.objects.filter(name='My SuperDude')[0]
-        self.assertEqual(description, updated_toon.description)
+        self.assertEqual(description, toon.description)
