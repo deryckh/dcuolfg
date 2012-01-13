@@ -24,3 +24,6 @@ class Character(models.Model):
     ## XXX: Running total of things to add:
     #
     # >> name must be unique per server
+    # >> combat rating
+    # >> gear
+    # >> what is the character looking for?
