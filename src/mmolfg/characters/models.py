@@ -3,6 +3,10 @@ Models for characters in mmolfg.
 """
 
 from django.contrib.auth.models import User
+from django.core.validators import (
+    MinValueValidator,
+    MaxValueValidator,
+)
 from django.db import models
 
 CHARACTER_SERVER_CHOICES = (
@@ -20,7 +24,9 @@ class Character(models.Model):
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
     player = models.ForeignKey(User, related_name='characters')
     description = models.TextField(blank=True)
-    level = models.IntegerField(blank=True, null=True, default=1)
+    level = models.IntegerField(
+        blank=True, null=True, default=1,
+        validators=[MinValueValidator(0), MaxValueValidator(30)])
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
 
