@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from mmolfg.characters.models import Character
 
 
-class TestCharacterAttributes(unittest.TestCase):
+class TestCharacterModel(unittest.TestCase):
     """Tests to ensure expected attributes for Character objects."""
 
     def make_player(self):
@@ -62,6 +62,7 @@ class TestCharacterAttributes(unittest.TestCase):
         server = 0
         toon = Character(name='foobar', server=server)
         self.assertEqual(server, toon.server)
+        self.assertEqual('USPS3', toon.get_server_display())
 
     def test_server_required(self):
         """You should not be able to create a chracter without a server."""
