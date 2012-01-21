@@ -4,7 +4,7 @@ Test suite for characters app in mmolfg.
 
 import unittest
 
-from mmolfg.characters.tests.characters import TestCharacterAttributes
+from mmolfg.characters.tests.attributes import TestCharacterAttributes
 
 UNIT_TESTS = (
     TestCharacterAttributes,
