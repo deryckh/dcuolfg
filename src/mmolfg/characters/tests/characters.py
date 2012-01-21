@@ -115,6 +115,16 @@ class TestCharacterAttributes(unittest.TestCase):
         toon.level = 30
         self.assertEqual(30, toon.level)
 
+    def test_level_cap(self):
+        """A Character has a max level of 30."""
+        player = self.make_player()
+        toon = Character(name='FakeToon', player=player)
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = '30 is the max level for a character.'
+        message_list = err.exception.message_dict.get('level')
+        self.assertEqual(expected_message, message_list[0])
+
     def test_starting_combat_rating(self):
         """A Character starts with a combat_rating of 0."""
         toon = Character(name='SomeToon')
