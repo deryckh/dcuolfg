@@ -104,6 +104,17 @@ class TestCharacterAttributes(unittest.TestCase):
         toon.description = description
         self.assertEqual(description, toon.description)
 
+    def test_starting_level(self):
+        """A Character starts with a level of 1."""
+        toon = Character(name='FriendlyHeroToon')
+        self.assertEqual(1, toon.level)
+
+    def test_level_update(self):
+        """A Character can update his or her level."""
+        toon = Character(name='EvilVillainToon')
+        toon.level = 30
+        self.assertEqual(30, toon.level)
+
     def test_starting_combat_rating(self):
         """A Character starts with a combat_rating of 0."""
         toon = Character(name='SomeToon')

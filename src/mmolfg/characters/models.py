@@ -20,6 +20,7 @@ class Character(models.Model):
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
     player = models.ForeignKey(User, related_name='characters')
     description = models.TextField(blank=True)
+    level = models.IntegerField(blank=True, null=True, default=1)
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
 
