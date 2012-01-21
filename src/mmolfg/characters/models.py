@@ -20,6 +20,7 @@ class Character(models.Model):
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
     player = models.ForeignKey(User, related_name='characters')
     description = models.TextField(blank=True)
+    combat_rating = models.IntegerField(null=True, blank=True)
 
     ## XXX: Running total of things to add:
     #

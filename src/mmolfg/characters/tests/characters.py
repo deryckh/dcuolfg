@@ -103,3 +103,16 @@ class TestCharacterAttributes(unittest.TestCase):
             enim ad minim veniam, quis nostrud exercitation ullamco."""
         toon.description = description
         self.assertEqual(description, toon.description)
+
+    def test_combat_rating(self):
+        """A Character can have a combat_rating."""
+        toon = Character(name='Someone')
+        toon.combat_rating = 64
+        self.assertEqual(64, toon.combat_rating)
+
+    def test_combat_rating_none(self):
+        """A Character starts with a combat_rating of None."""
+        player = self.make_player()
+        toon = Character(name='SomeToon', server=0, player=player)
+        toon.full_clean()
+        self.assertEqual(None, toon.combat_rating)
