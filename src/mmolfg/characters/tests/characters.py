@@ -104,15 +104,24 @@ class TestCharacterAttributes(unittest.TestCase):
         toon.description = description
         self.assertEqual(description, toon.description)
 
-    def test_combat_rating(self):
+    def test_starting_combat_rating(self):
+        """A Character starts with a combat_rating of 0."""
+        toon = Character(name='SomeToon')
+        self.assertEqual(0, toon.combat_rating)
+
+    def test_combat_rating_update(self):
         """A Character can have a combat_rating."""
         toon = Character(name='Someone')
         toon.combat_rating = 64
         self.assertEqual(64, toon.combat_rating)
 
-    def test_combat_rating_none(self):
-        """A Character starts with a combat_rating of None."""
-        player = self.make_player()
-        toon = Character(name='SomeToon', server=0, player=player)
-        toon.full_clean()
-        self.assertEqual(None, toon.combat_rating)
+    def test_starting_skill_points(self):
+        """A Character starts with 0 skill points."""
+        toon = Character(name='SomeToon')
+        self.assertEqual(0, toon.skill_points)
+
+    def test_skill_points_update(self):
+        """A Character can track his skill points."""
+        toon = Character(name='SomeToon')
+        toon.skill_points = 101
+        self.assertEqual(101, toon.skill_points)
