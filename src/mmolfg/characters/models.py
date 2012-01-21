@@ -30,8 +30,14 @@ class Character(models.Model):
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
 
-    ## XXX: Running total of things to add:
+    # XXX: Still need the following attributes:
     #
-    # >> name must be unique per server
-    # >> gear
-    # >> what is the character looking for?
+    # 1.) Role (Controller, Tank, Healer, DPS)
+    # 2.) Powerset (Fire, Ice, Mental, Gadgets, Hard light, etc.)
+    # 3.) +1 votes
+
+    class Meta:
+        """Metadata for Character model."""
+        unique_together = ('server', 'name')
+
+    # XXX: Not sure how to model the "looking_for bit yet."
