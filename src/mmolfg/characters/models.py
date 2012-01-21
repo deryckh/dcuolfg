@@ -9,16 +9,34 @@ from django.core.validators import (
 )
 from django.db import models
 
-CHARACTER_SERVER_CHOICES = (
-    (0, 'USPS3'),
-    (1, 'USPC'),
-    (2, 'EUPS3'),
-    (3, 'EUPC'),
-)
-
 
 class Character(models.Model):
     """Characters used by Players in DCUO."""
+
+    CHARACTER_SERVER_CHOICES = (
+        (0, 'USPS3'),
+        (1, 'USPC'),
+        (2, 'EUPS3'),
+        (3, 'EUPC'),
+    )
+
+    CHARACTER_ROLE_CHOICES = (
+        (0, 'DPS'),
+        (1, 'Controller'),
+        (2, 'Healer'),
+        (3, 'Tank'),
+    )
+
+    CHARACTER_POWERSET_CHOICES = (
+        (0, 'Fire'),
+        (1, 'Ice'),
+        (2, 'Gadgets'),
+        (3, 'Mental'),
+        (4, 'Hard light'),
+        (5, 'Socery'),
+        (6, 'Nature'),
+        (7, 'Electricity'),
+    )
 
     name = models.CharField(max_length=75)
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
@@ -43,7 +61,7 @@ class Character(models.Model):
     def get_server_value(self, server_name):
         """Return the server value to store based on server name."""
         server_value = [
-            srv[0] for srv in CHARACTER_SERVER_CHOICES
+            srv[0] for srv in self.CHARACTER_SERVER_CHOICES
             if srv[1] == server_name]
         if len(server_value) == 1:
             return server_value[0]
