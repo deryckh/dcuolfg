@@ -40,4 +40,14 @@ class Character(models.Model):
         """Metadata for Character model."""
         unique_together = ('server', 'name')
 
+    def get_server_value(self, server_name):
+        """Return the server value to store based on server name."""
+        server_value = [
+            srv[0] for srv in CHARACTER_SERVER_CHOICES
+            if srv[1] == server_name]
+        if len(server_value) == 1:
+            return server_value[0]
+        return None
+
+
     # XXX: Not sure how to model the "looking_for bit yet."

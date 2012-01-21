@@ -74,6 +74,16 @@ class TestCharacterModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('server')
         self.assertEqual(expected_message, message_list[0])
 
+    def test_get_server_value(self):
+        """Characters have a get_server_value method."""
+        toon = Character(name='GoHomeBuddy')
+        self.assertEqual(0, toon.get_server_value('USPS3'))
+
+    def test_get_server_value_none(self):
+        """Character.get_server_value will return None for unknown servers."""
+        toon = Character(name='YourBiggestFan')
+        self.assertEqual(None, toon.get_server_value('jhdbhjbdehjb'))
+
     def test_player(self):
         """Each Character should have a player attribute."""
         fred = User(username='fred')
