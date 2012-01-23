@@ -2,6 +2,8 @@
 Models for characters in mmolfg.
 """
 
+import datetime
+
 from django.contrib.auth.models import User
 from django.core.validators import (
     MinValueValidator,
@@ -49,14 +51,19 @@ class Character(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(30)])
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
+    date_added = models.DateTimeField(default=datetime.datetime.now)
+    date_updated = models.DateTimeField(default=datetime.datetime.now)
 
     # XXX: Still need the following attributes:
     #
-    # 3.) +1 votes
+    # >> +1 votes
+    # >> images
 
     class Meta:
         """Metadata for Character model."""
         unique_together = ('server', 'name')
+        db_table = 'characters'
+        get_latest_by = 'date_added'
 
     def get_server_value(self, server_name):
         """Return the server value to store based on server name."""
@@ -66,6 +73,5 @@ class Character(models.Model):
         if len(server_value) == 1:
             return server_value[0]
         return None
-
 
     # XXX: Not sure how to model the "looking_for bit yet."

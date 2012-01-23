@@ -2,6 +2,7 @@
 Tests for Character objects in mmolfg.
 """
 
+import datetime
 import unittest
 
 from django.core.exceptions import ValidationError
@@ -200,3 +201,27 @@ class TestCharacterModel(unittest.TestCase):
         toon = Character(name='SomeToon')
         toon.skill_points = 101
         self.assertEqual(101, toon.skill_points)
+
+    def test_date_added(self):
+        """A character should have a date_added attribute when added."""
+        toon = Character(name='SomeoneAdded')
+        self.assertIsInstance(toon.date_added, datetime.datetime)
+
+    def test_date_added_updated(self):
+        """You should be able to update the date added."""
+        toon = Character(name='SomeToon')
+        older_date = datetime.datetime.now() - datetime.timedelta(7)
+        toon.date_added = older_date
+        self.assertEqual(older_date, toon.date_added)
+
+    def test_date_updated(self):
+        """A Character should have a date_updated when created."""
+        toon = Character(name='MeToon')
+        self.assertIsInstance(toon.date_updated, datetime.datetime)
+
+    def test_date_updated_changed(self):
+        """You should be able to update Character.date_updated."""
+        toon = Character(name='GazerBeam')
+        new_date = datetime.datetime.now() + datetime.timedelta(14)
+        toon.date_updated = new_date
+        self.assertEqual(new_date, toon.date_updated)
