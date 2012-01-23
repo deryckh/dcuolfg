@@ -11,6 +11,8 @@ from django.core.validators import (
 )
 from django.db import models
 
+from mmolfg.characters.managers import CharacterManager
+
 
 class Character(models.Model):
     """Characters used by Players in DCUO."""
@@ -59,6 +61,8 @@ class Character(models.Model):
         auto_now_add=True, auto_now=False, default=datetime.datetime.now)
     date_updated = models.DateTimeField(
         auto_now_add=True, auto_now=True, default=datetime.datetime.now)
+
+    objects = CharacterManager()
 
     # XXX: Still need the following attributes:
     #
