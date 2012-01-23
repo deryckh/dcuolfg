@@ -51,8 +51,14 @@ class Character(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(30)])
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
-    date_added = models.DateTimeField(default=datetime.datetime.now)
-    date_updated = models.DateTimeField(default=datetime.datetime.now)
+
+    # The dates make use of auto_now and auto_now_add options, but
+    # also include a "default" value.  This is so that Character objects
+    # work sanely without having to call save on them.
+    date_added = models.DateTimeField(
+        auto_now_add=True, auto_now=False, default=datetime.datetime.now)
+    date_updated = models.DateTimeField(
+        auto_now_add=True, auto_now=True, default=datetime.datetime.now)
 
     # XXX: Still need the following attributes:
     #
