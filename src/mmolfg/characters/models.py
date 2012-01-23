@@ -71,6 +71,10 @@ class Character(models.Model):
         db_table = 'characters'
         get_latest_by = 'date_added'
 
+    def __unicode__(self):
+        """Used to describe each object in admin."""
+        return u'%s: %s' % (self.get_server_display(), self.name)
+
     def get_server_value(self, server_name):
         """Return the server value to store based on server name."""
         server_value = [
