@@ -68,7 +68,8 @@ class TestCharacterModel(unittest.TestCase):
         """Characters can have names with spaces in them."""
         name = 'Captain DjangoHacker'
         player = self.make_player()
-        toon = Character(name=name, server=0, player=player, role=0)
+        toon = Character(
+            name=name, server=0, player=player, role=0, powerset=0)
         toon.full_clean()
         self.assertEqual(name, toon.name)
 
@@ -100,11 +101,7 @@ class TestCharacterModel(unittest.TestCase):
         self.assertEqual(None, toon.get_server_value('jhdbhjbdehjb'))
 
     def test_role(self):
-        """Each Character has a role.
-
-        There is no default role, so it should be specified
-        when the character is created.
-        """
+        """Each Character has a role when created."""
         toon = Character(name='NewHero', role=0)
         self.assertEqual(0, toon.role)
 
@@ -116,6 +113,21 @@ class TestCharacterModel(unittest.TestCase):
             toon.full_clean()
         expected_message = 'This field cannot be null.'
         message_list = err.exception.message_dict.get('role')
+        self.assertEqual(expected_message, message_list[0])
+
+    def test_powerset(self):
+        """Characters have a powerset attribute when created."""
+        toon = Character(name='SomeToon', powerset=0)
+        self.assertEqual(0, toon.powerset)
+
+    def test_powerset_required(self):
+        """You should not be able to create a Character without a powerset."""
+        player = self.make_player()
+        toon = Character(name='foobar', player=player)
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = 'This field cannot be null.'
+        message_list = err.exception.message_dict.get('powerset')
         self.assertEqual(expected_message, message_list[0])
 
     def test_character_without_description(self):

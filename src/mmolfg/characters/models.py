@@ -32,7 +32,7 @@ class Character(models.Model):
         (1, 'Ice'),
         (2, 'Gadgets'),
         (3, 'Mental'),
-        (4, 'Hard light'),
+        (4, 'Light'),
         (5, 'Socery'),
         (6, 'Nature'),
         (7, 'Electricity'),
@@ -41,7 +41,8 @@ class Character(models.Model):
     player = models.ForeignKey(User, related_name='characters')
     name = models.CharField(max_length=75)
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
-    role = models.IntegerField()
+    role = models.IntegerField(choices=CHARACTER_ROLE_CHOICES)
+    powerset = models.IntegerField(choices=CHARACTER_POWERSET_CHOICES)
     description = models.TextField(blank=True)
     level = models.IntegerField(
         blank=True, null=True, default=1,
@@ -51,8 +52,6 @@ class Character(models.Model):
 
     # XXX: Still need the following attributes:
     #
-    # 1.) Role (Controller, Tank, Healer, DPS)
-    # 2.) Powerset (Fire, Ice, Mental, Gadgets, Hard light, etc.)
     # 3.) +1 votes
 
     class Meta:
