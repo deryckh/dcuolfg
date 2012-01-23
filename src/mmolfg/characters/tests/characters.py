@@ -18,6 +18,21 @@ class TestCharacterModel(unittest.TestCase):
         player, just_created = User.objects.get_or_create(username='player')
         return player
 
+    def test_player(self):
+        """Each Character should have a player attribute."""
+        fred = User(username='fred')
+        toon = Character(name='Gazorbeam', server=0, player=fred)
+        self.assertEqual(fred, toon.player)
+
+    def test_player_has_chracters(self):
+        """Every user who is a player should have characters."""
+        player = self.make_player()
+        toon = Character(name='funbar foo', server=0, player=player)
+        another_toon = Character(name='flexbar fofo', server=0, player=player)
+        expected_toons = [toon, another_toon]
+        actual_toons = list(player.characters.all())
+        self.assertEqual(expected_toons.sort(), actual_toons.sort())
+
     def test_character_name(self):
         """Each Character instance should have a name attribute."""
         name = 'superdoopertoon'
@@ -53,7 +68,7 @@ class TestCharacterModel(unittest.TestCase):
         """Characters can have names with spaces in them."""
         name = 'Captain DjangoHacker'
         player = self.make_player()
-        toon = Character(name=name, server=0, player=player)
+        toon = Character(name=name, server=0, player=player, role=0)
         toon.full_clean()
         self.assertEqual(name, toon.name)
 
@@ -84,20 +99,24 @@ class TestCharacterModel(unittest.TestCase):
         toon = Character(name='YourBiggestFan')
         self.assertEqual(None, toon.get_server_value('jhdbhjbdehjb'))
 
-    def test_player(self):
-        """Each Character should have a player attribute."""
-        fred = User(username='fred')
-        toon = Character(name='Gazorbeam', server=0, player=fred)
-        self.assertEqual(fred, toon.player)
+    def test_role(self):
+        """Each Character has a role.
 
-    def test_player_has_chracters(self):
-        """Every user who is a player should have characters."""
+        There is no default role, so it should be specified
+        when the character is created.
+        """
+        toon = Character(name='NewHero', role=0)
+        self.assertEqual(0, toon.role)
+
+    def test_role_required(self):
+        """You should not be able to create a character without a role."""
         player = self.make_player()
-        toon = Character(name='funbar foo', server=0, player=player)
-        another_toon = Character(name='flexbar fofo', server=0, player=player)
-        expected_toons = [toon, another_toon]
-        actual_toons = list(player.characters.all())
-        self.assertEqual(expected_toons.sort(), actual_toons.sort())
+        toon = Character(name='foobar', player=player)
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = 'This field cannot be null.'
+        message_list = err.exception.message_dict.get('role')
+        self.assertEqual(expected_message, message_list[0])
 
     def test_character_without_description(self):
         """Characters can be created without a description."""

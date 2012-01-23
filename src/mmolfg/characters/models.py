@@ -38,9 +38,10 @@ class Character(models.Model):
         (7, 'Electricity'),
     )
 
+    player = models.ForeignKey(User, related_name='characters')
     name = models.CharField(max_length=75)
     server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
-    player = models.ForeignKey(User, related_name='characters')
+    role = models.IntegerField()
     description = models.TextField(blank=True)
     level = models.IntegerField(
         blank=True, null=True, default=1,
