@@ -89,3 +89,20 @@ class Character(models.Model):
         return None
 
     # XXX: Not sure how to model the "looking_for bit yet."
+
+
+class CharacterVote(models.Model):
+    """Votes for or against a Character."""
+
+    CHARACTER_VOTE_CHOICES = (
+        (0, '-1'),
+        (1, '+1'),
+    )
+
+    character = models.ForeignKey(Character, related_name='votes_for')
+    voter = models.ForeignKey(Character, related_name='votes_by')
+    vote = models.IntegerField(choices=CHARACTER_VOTE_CHOICES)
+
+    class Meta:
+        """Metadata for CharacterVote model."""
+        db_table = 'character_vote'

@@ -9,15 +9,11 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 from mmolfg.characters.models import Character
+from mmolfg.characters.tests.utils import make_player
 
 
 class TestCharacterModel(unittest.TestCase):
     """Tests to ensure expected attributes for Character objects."""
-
-    def make_player(self):
-        """Helper method for creating a User who is the player"""
-        player, just_created = User.objects.get_or_create(username='player')
-        return player
 
     def test_player(self):
         """Each Character should have a player attribute."""
@@ -27,7 +23,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_player_has_chracters(self):
         """Every user who is a player should have characters."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='funbar foo', server=0, player=player)
         another_toon = Character(name='flexbar fofo', server=0, player=player)
         expected_toons = [toon, another_toon]
@@ -45,7 +41,7 @@ class TestCharacterModel(unittest.TestCase):
         name = (
             'thisisareaallylongname'
             'fhenjnndeukabandnjndehbdehbhdbehbdehbhdbjndejnjdnejndjendj')
-        player = self.make_player()
+        player = make_player()
         toon = Character(name=name, server=0, player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
@@ -57,7 +53,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_character_name_blank(self):
         """Characters cannot be created with blank names."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='', server=0, player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
@@ -68,7 +64,7 @@ class TestCharacterModel(unittest.TestCase):
     def test_character_name_allows_space(self):
         """Characters can have names with spaces in them."""
         name = 'Captain DjangoHacker'
-        player = self.make_player()
+        player = make_player()
         toon = Character(
             name=name, server=0, player=player, role=0, powerset=0)
         toon.full_clean()
@@ -83,7 +79,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_server_required(self):
         """You should not be able to create a chracter without a server."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='foobar', player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
@@ -108,7 +104,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_role_required(self):
         """You should not be able to create a character without a role."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='foobar', player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
@@ -123,7 +119,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_powerset_required(self):
         """You should not be able to create a Character without a powerset."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='foobar', player=player)
         with self.assertRaises(ValidationError) as err:
             toon.full_clean()
@@ -138,7 +134,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_description(self):
         """A Character can have a description."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='My SuperDude', server=0, player=player)
         description = """
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -160,7 +156,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_level_cap(self):
         """A Character has a max level of 30."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='FakeToon', player=player, server=0)
         toon.level = 31
         with self.assertRaises(ValidationError) as err:
@@ -171,7 +167,7 @@ class TestCharacterModel(unittest.TestCase):
 
     def test_level_min(self):
         """A Character cannot have a negative level."""
-        player = self.make_player()
+        player = make_player()
         toon = Character(name='UnrealNegativeHero', player=player, server=0)
         toon.level = -1
         with self.assertRaises(ValidationError) as err:
