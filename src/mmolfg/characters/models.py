@@ -72,7 +72,7 @@ class Character(models.Model):
     class Meta:
         """Metadata for Character model."""
         unique_together = ('server', 'name')
-        db_table = 'characters'
+        db_table = 'character'
         get_latest_by = 'date_added'
 
     def __unicode__(self):
