@@ -62,6 +62,11 @@ class Character(models.Model):
     date_updated = models.DateTimeField(
         auto_now_add=True, auto_now=True, default=datetime.datetime.now)
 
+    # Denormalized vote counts, to make it easier and faster
+    # to get at the CharacterVote data.
+    positive_votes = models.PositiveIntegerField(default=0)
+    negative_votes = models.PositiveIntegerField(default=0)
+
     objects = CharacterManager()
 
     # XXX: Still need the following attributes:
@@ -106,3 +111,12 @@ class CharacterVote(models.Model):
     class Meta:
         """Metadata for CharacterVote model."""
         db_table = 'character_vote'
+
+    def save(self, *args, **kwargs):
+        """Override save to handle vote counting on Character."""
+        super(CharacterVote, self).save(*args, **kwargs)
+        if self.vote == 0:
+            self.character.negative_votes += 1
+        else:
+            self.character.positive_votes += 1
+        self.character.save()
