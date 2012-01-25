@@ -2,7 +2,6 @@
 URLConf for MMOLFG sites.
 """
 
-from django.conf import settings
 from django.conf.urls.defaults import (
     include,
     patterns,
@@ -23,10 +22,3 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='home'),
 )
-
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-   )

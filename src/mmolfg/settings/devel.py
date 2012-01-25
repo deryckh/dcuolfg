@@ -8,5 +8,9 @@ SOURCE_ROOT = os.path.realpath('.')
 TEMPLATE_DIRS = (
     '%s/templates' % SOURCE_ROOT,
 )
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media'
 MEDIA_ROOT = '%s/static' % SOURCE_ROOT
+STATIC_URL = '/static'
+STATICFILES_DIRS = (
+    '%s/static' % SOURCE_ROOT,
+)

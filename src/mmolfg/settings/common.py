@@ -37,7 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'registration',
+    'sorl.thumbnail',
     'mmolfg.accounts',
     'mmolfg.characters',
 )
