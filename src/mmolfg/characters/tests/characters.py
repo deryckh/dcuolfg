@@ -7,6 +7,7 @@ import unittest
 
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from sorl.thumbnail import ImageField
 
 from mmolfg.characters.models import Character
 from mmolfg.characters.tests.utils import make_player
@@ -197,6 +198,22 @@ class TestCharacterModel(unittest.TestCase):
         toon = Character(name='SomeToon')
         toon.skill_points = 101
         self.assertEqual(101, toon.skill_points)
+
+    def test_character_without_image(self):
+        """Characters can be created without image info."""
+        toon = Character()
+        self.assertEqual('', toon.image)
+
+    def test_character_image_update(self):
+        """Characters should be able to specify an image.
+
+        This test is for completeness sake.  Most of this is
+        hidden away behind the model, admin, or form interactions.
+        """
+        toon = Character(name='ToonWithImage')
+        img = ImageField('toon_with_image.png')
+        toon.image = img
+        self.assertEqual(img, toon.image)
 
     def test_date_added(self):
         """A character should have a date_added attribute when added."""
