@@ -10,6 +10,7 @@ from django.core.validators import (
     MaxValueValidator,
 )
 from django.db import models
+from sorl.thumbnail import ImageField
 
 from mmolfg.characters.managers import CharacterManager
 
@@ -53,6 +54,7 @@ class Character(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(30)])
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
+    image = ImageField(upload_to="img/characters/%Y/%m/%d", blank=True)
 
     # The dates make use of auto_now and auto_now_add options, but
     # also include a "default" value.  This is so that Character objects
@@ -68,11 +70,6 @@ class Character(models.Model):
     negative_votes = models.PositiveIntegerField(default=0)
 
     objects = CharacterManager()
-
-    # XXX: Still need the following attributes:
-    #
-    # >> +1 votes
-    # >> images
 
     class Meta:
         """Metadata for Character model."""
