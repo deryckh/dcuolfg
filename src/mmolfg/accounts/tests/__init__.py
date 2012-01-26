@@ -4,10 +4,10 @@ Test suite for accounts app in mmolfg.
 
 import unittest
 
-from mmolfg.accounts.tests.accounts import TestBaseTest
+from mmolfg.accounts.tests.accounts import TestProfileModel
 
 UNIT_TESTS = (
-    TestBaseTest,
+    TestProfileModel,
 )
 
 

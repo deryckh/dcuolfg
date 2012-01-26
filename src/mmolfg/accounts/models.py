@@ -8,8 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Profile(models.Model):
-    """Main profile model module."""
+    """Profile module for Users."""
 
     user = models.ForeignKey(User)
-    real_name = models.CharField(_('real name'), max_length=75,
-        blank=True)
+    real_name = models.CharField(_('real name'), max_length=75, blank=True)

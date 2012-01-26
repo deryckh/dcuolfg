@@ -14,8 +14,9 @@ DATABASES = {
     }
 }
 
-# Resistration settings
+# Registration and Accounts
 ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_PROFILE_MODULE = 'accounts.Profile'
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
