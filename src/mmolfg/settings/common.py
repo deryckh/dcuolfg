@@ -43,4 +43,5 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'mmolfg.accounts',
     'mmolfg.characters',
+    'mmolfg.missions',
 )
