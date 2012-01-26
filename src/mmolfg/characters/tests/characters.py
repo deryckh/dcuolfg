@@ -16,13 +16,13 @@ from mmolfg.characters.tests.utils import make_player
 class TestCharacterModel(unittest.TestCase):
     """Tests to ensure expected attributes for Character objects."""
 
-    def test_player(self):
+    def test_character_player(self):
         """Each Character should have a player attribute."""
         fred = User(username='fred')
         toon = Character(name='Gazorbeam', server=0, player=fred)
         self.assertEqual(fred, toon.player)
 
-    def test_player_has_chracters(self):
+    def test_character_player_has_characters(self):
         """Every user who is a player should have characters."""
         player = make_player()
         toon = Character(name='funbar foo', server=0, player=player)
@@ -71,14 +71,14 @@ class TestCharacterModel(unittest.TestCase):
         toon.full_clean()
         self.assertEqual(name, toon.name)
 
-    def test_server(self):
+    def test_character_server(self):
         """Each Character lives on a server."""
         server = 0
         toon = Character(name='foobar', server=server)
         self.assertEqual(server, toon.server)
         self.assertEqual('USPS3', toon.get_server_display())
 
-    def test_server_required(self):
+    def test_character_server_required(self):
         """You should not be able to create a chracter without a server."""
         player = make_player()
         toon = Character(name='foobar', player=player)
@@ -88,22 +88,22 @@ class TestCharacterModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('server')
         self.assertEqual(expected_message, message_list[0])
 
-    def test_get_server_value(self):
+    def test_character_get_server_value(self):
         """Characters have a get_server_value method."""
         toon = Character(name='GoHomeBuddy')
         self.assertEqual(0, toon.get_server_value('USPS3'))
 
-    def test_get_server_value_none(self):
+    def test_character_get_server_value_none(self):
         """Character.get_server_value will return None for unknown servers."""
         toon = Character(name='YourBiggestFan')
         self.assertEqual(None, toon.get_server_value('jhdbhjbdehjb'))
 
-    def test_role(self):
+    def test_character_role(self):
         """Each Character has a role when created."""
         toon = Character(name='NewHero', role=0)
         self.assertEqual(0, toon.role)
 
-    def test_role_required(self):
+    def test_character_role_required(self):
         """You should not be able to create a character without a role."""
         player = make_player()
         toon = Character(name='foobar', player=player)
@@ -113,12 +113,12 @@ class TestCharacterModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('role')
         self.assertEqual(expected_message, message_list[0])
 
-    def test_powerset(self):
+    def test_character_powerset(self):
         """Characters have a powerset attribute when created."""
         toon = Character(name='SomeToon', powerset=0)
         self.assertEqual(0, toon.powerset)
 
-    def test_powerset_required(self):
+    def test_character_powerset_required(self):
         """You should not be able to create a Character without a powerset."""
         player = make_player()
         toon = Character(name='foobar', player=player)
@@ -133,8 +133,8 @@ class TestCharacterModel(unittest.TestCase):
         toon = Character()
         self.assertEqual('', toon.description)
 
-    def test_description(self):
-        """A Character can have a description."""
+    def test_character_update_description(self):
+        """You should be able to update a Character description."""
         player = make_player()
         toon = Character(name='My SuperDude', server=0, player=player)
         description = """
@@ -144,18 +144,18 @@ class TestCharacterModel(unittest.TestCase):
         toon.description = description
         self.assertEqual(description, toon.description)
 
-    def test_starting_level(self):
+    def test_character_starting_level(self):
         """A Character starts with a level of 1."""
         toon = Character(name='FriendlyHeroToon')
         self.assertEqual(1, toon.level)
 
-    def test_level_update(self):
-        """A Character can update his or her level."""
+    def test_character_update_level(self):
+        """You should be able to update a Character's level."""
         toon = Character(name='EvilVillainToon')
         toon.level = 30
         self.assertEqual(30, toon.level)
 
-    def test_level_cap(self):
+    def test_character_level_cap(self):
         """A Character has a max level of 30."""
         player = make_player()
         toon = Character(name='FakeToon', player=player, server=0)
@@ -166,7 +166,7 @@ class TestCharacterModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('level')
         self.assertEqual(expected_message, message_list[0])
 
-    def test_level_min(self):
+    def test_character_level_min(self):
         """A Character cannot have a negative level."""
         player = make_player()
         toon = Character(name='UnrealNegativeHero', player=player, server=0)
@@ -177,34 +177,34 @@ class TestCharacterModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('level')
         self.assertEqual(expected_message, message_list[0])
 
-    def test_starting_combat_rating(self):
+    def test_character_starting_combat_rating(self):
         """A Character starts with a combat_rating of 0."""
         toon = Character(name='SomeToon')
         self.assertEqual(0, toon.combat_rating)
 
-    def test_combat_rating_update(self):
+    def test_character_update_combat_rating(self):
         """A Character can have a combat_rating."""
         toon = Character(name='Someone')
         toon.combat_rating = 64
         self.assertEqual(64, toon.combat_rating)
 
-    def test_starting_skill_points(self):
+    def test_character_starting_skill_points(self):
         """A Character starts with 0 skill points."""
         toon = Character(name='SomeToon')
         self.assertEqual(0, toon.skill_points)
 
-    def test_skill_points_update(self):
+    def test_character_update_skill_points(self):
         """A Character can track his skill points."""
         toon = Character(name='SomeToon')
         toon.skill_points = 101
         self.assertEqual(101, toon.skill_points)
 
-    def test_is_main_default(self):
+    def test_character_is_main_default(self):
         """A Character should not be set is_main by default."""
         toon = Character()
         self.assertFalse(toon.is_main)
 
-    def test_is_main_update(self):
+    def test_character_update_is_main(self):
         """You should be able to set a Character as your main toon."""
         toon = Character()
         toon.is_main = True
@@ -215,7 +215,7 @@ class TestCharacterModel(unittest.TestCase):
         toon = Character()
         self.assertEqual('', toon.image)
 
-    def test_character_image_update(self):
+    def test_character_udpate_image(self):
         """Characters should be able to specify an image.
 
         This test is for completeness sake.  Most of this is
@@ -226,24 +226,24 @@ class TestCharacterModel(unittest.TestCase):
         toon.image = img
         self.assertEqual(img, toon.image)
 
-    def test_date_added(self):
+    def test_character_date_added(self):
         """A character should have a date_added attribute when added."""
         toon = Character(name='SomeoneAdded')
         self.assertIsInstance(toon.date_added, datetime.datetime)
 
-    def test_date_added_updated(self):
+    def test_character_update_date_added(self):
         """You should be able to update the date added."""
         toon = Character(name='SomeToon')
         older_date = datetime.datetime.now() - datetime.timedelta(7)
         toon.date_added = older_date
         self.assertEqual(older_date, toon.date_added)
 
-    def test_date_updated(self):
+    def test_character_date_updated(self):
         """A Character should have a date_updated when created."""
         toon = Character(name='MeToon')
         self.assertIsInstance(toon.date_updated, datetime.datetime)
 
-    def test_date_updated_changed(self):
+    def test_character_update_date_updated(self):
         """You should be able to update Character.date_updated."""
         toon = Character(name='GazerBeam')
         new_date = datetime.datetime.now() + datetime.timedelta(14)
