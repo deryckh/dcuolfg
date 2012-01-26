@@ -87,7 +87,7 @@ class TestProfileModel(unittest.TestCase):
         hidden away behind the model, admin, or form interactions.
         """
         profile = Profile()
-        img = ImageField('toon_with_image.png')
+        img = ImageField('profile_image.png')
         profile.image = img
         self.assertEqual(img, profile.image)
 
