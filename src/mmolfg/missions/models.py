@@ -55,7 +55,8 @@ class Mission(models.Model):
     mode = models.IntegerField(
         _('mode'), blank=True, null=True, choices=MISSION_MODE_CHOICES)
     name = models.CharField(_('name'), max_length=100)
-    location = models.ForeignKey(Location, verbose_name=_('location'))
+    location = models.ForeignKey(
+        Location, verbose_name=_('location'), related_name='missions')
     num_players = models.IntegerField(
         _('Number of players'), choices=MISSION_NUM_PLAYER_CHOICES, default=4)
 
