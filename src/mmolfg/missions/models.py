@@ -11,13 +11,13 @@ class Mission(models.Model):
 
     MISSION_TYPE_CHOICES = (
         (0, 'Areana PVP'),
-        (1, 'Alerts'),
+        (1, 'Alert'),
         (2, 'Legends PVP'),
-        (3, 'Raids'),
-        (4, 'Duos'),
-        (5, 'Bounties'),
+        (3, 'Raid'),
+        (4, 'Duo'),
+        (5, 'Bounty'),
         (6, 'Character leveling'),
     )
 
     mission_type = models.IntegerField(
-        _('mission type'), choices=MISSION_TYPE_CHOICES)
+        _('mission type'), choices=MISSION_TYPE_CHOICES, default=1)
