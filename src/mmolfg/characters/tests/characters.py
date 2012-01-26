@@ -199,6 +199,17 @@ class TestCharacterModel(unittest.TestCase):
         toon.skill_points = 101
         self.assertEqual(101, toon.skill_points)
 
+    def test_is_main_default(self):
+        """A Character should not be set is_main by default."""
+        toon = Character()
+        self.assertFalse(toon.is_main)
+
+    def test_is_main_update(self):
+        """You should be able to set a Character as your main toon."""
+        toon = Character()
+        toon.is_main = True
+        self.assertTrue(toon.is_main)
+
     def test_character_without_image(self):
         """Characters can be created without image info."""
         toon = Character()
