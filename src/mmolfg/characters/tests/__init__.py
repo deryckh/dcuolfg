@@ -5,11 +5,14 @@ Test suite for characters app in mmolfg.
 import unittest
 
 from mmolfg.characters.tests.characters import TestCharacterModel
+from mmolfg.characters.tests.lfg import TestLFGRequest
 from mmolfg.characters.tests.votes import TestCharacterVotes
+
 
 UNIT_TESTS = (
     TestCharacterModel,
     TestCharacterVotes,
+    TestLFGRequest,
 )
 
 
