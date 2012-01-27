@@ -59,6 +59,20 @@ class TestMissionModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('name')
         self.assertEqual(expected_message, message_list[0])
 
+    def test_mission_short_name(self):
+        """A Mission should have a short_name when created."""
+        mission = Mission(short_name='LOA')
+        self.assertEqual('LOA', mission.short_name)
+
+    def test_mission_short_name_required(self):
+        """You should not be able to create a Mission without a short_name."""
+        mission = Mission()
+        with self.assertRaises(ValidationError) as err:
+            mission.full_clean()
+        expected_message = 'This field cannot be blank.'
+        message_list = err.exception.message_dict.get('short_name')
+        self.assertEqual(expected_message, message_list[0])
+
     def test_mission_location(self):
         """A Mission should have a location when created."""
         location = Location(name='Smallville')
