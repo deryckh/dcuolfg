@@ -19,7 +19,16 @@ class LocationAdmin(AdminImageMixin, admin.ModelAdmin):
 
 class MissionAdmin(admin.ModelAdmin):
     """Adming class for Mission."""
-    list_filter = ('mission_type',)
+    list_filter = (
+        'mission_type',
+        'num_players',
+    )
+    list_display = (
+        'name',
+        'mission_type',
+        'short_name',
+        'location',
+    )
 
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Mission, MissionAdmin)
