@@ -58,6 +58,7 @@ class Character(models.Model):
     skill_points = models.IntegerField(blank=True, null=True, default=0)
     image = ImageField(upload_to='img/characters/%Y/%m/%d', blank=True)
     is_main = models.BooleanField(default=False)
+    lfg = models.BooleanField(default=False)
 
     # The dates make use of auto_now and auto_now_add options, but
     # also include a "default" value.  This is so that Character objects

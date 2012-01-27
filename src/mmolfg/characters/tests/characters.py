@@ -210,6 +210,17 @@ class TestCharacterModel(unittest.TestCase):
         toon.is_main = True
         self.assertTrue(toon.is_main)
 
+    def test_character_lfg_default(self):
+        """A Character should not be LFG by default."""
+        toon = Character()
+        self.assertFalse(toon.lfg)
+
+    def test_character_update_lfg(self):
+        """You should be able to update LFG status for a Character."""
+        toon = Character()
+        toon.lfg = True
+        self.assertTrue(toon.lfg)
+
     def test_character_without_image(self):
         """Characters can be created without image info."""
         toon = Character()
