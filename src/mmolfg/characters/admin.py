@@ -6,7 +6,10 @@ from django.contrib import admin
 
 from sorl.thumbnail.admin import AdminImageMixin
 
-from mmolfg.characters.models import Character
+from mmolfg.characters.models import (
+    Character,
+    LFGRequest,
+)
 
 
 class CharacterAdmin(AdminImageMixin, admin.ModelAdmin):
@@ -14,3 +17,4 @@ class CharacterAdmin(AdminImageMixin, admin.ModelAdmin):
     pass
 
 admin.site.register(Character, CharacterAdmin)
+admin.site.register(LFGRequest)

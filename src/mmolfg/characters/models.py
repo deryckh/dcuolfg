@@ -10,9 +10,11 @@ from django.core.validators import (
     MaxValueValidator,
 )
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
 
 from mmolfg.characters.managers import CharacterManager
+from mmolfg.missions.models import Mission
 
 
 class Character(models.Model):
@@ -118,3 +120,23 @@ class CharacterVote(models.Model):
         else:
             self.character.positive_votes += 1
         self.character.save()
+
+
+class LFGRequest(models.Model):
+    """The main object for tracking what Characters are LFG for."""
+
+    character = models.ForeignKey(
+        Character, verbose_name=_('character'), related_name='requests')
+    mission = models.ForeignKey(
+        Mission, verbose_name=_('mission'), related_name='requests')
+    description = models.TextField(_('description'), blank=True)
+
+    class Meta:
+        """Meta options for LFGRequest."""
+        db_table = 'lfg_request'
+        verbose_name = 'LFG Request'
+        verbose_name_plural = 'LFG Requests'
+
+    def __unicode__(self):
+        """unicode representation of LFGRequest."""
+        return u'LFG %s, for %s' % (self.character, self.mission)
