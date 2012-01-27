@@ -22,12 +22,12 @@ class MissionAdmin(admin.ModelAdmin):
     list_filter = (
         'mission_type',
         'num_players',
+        'featured',
     )
     list_display = (
         'name',
         'mission_type',
-        'short_name',
-        'location',
+        'featured',
     )
 
 admin.site.register(Location, LocationAdmin)

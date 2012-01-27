@@ -60,6 +60,7 @@ class Mission(models.Model):
         Location, verbose_name=_('location'), related_name='missions')
     num_players = models.IntegerField(
         _('Number of players'), choices=MISSION_NUM_PLAYER_CHOICES, default=4)
+    featured = models.BooleanField(_('featured'), default=False)
 
     class Meta():
         """Meta options for Mission."""

@@ -126,3 +126,14 @@ class TestMissionModel(unittest.TestCase):
         expected_message = 'Value 33 is not a valid choice.'
         message_list = err.exception.message_dict.get('num_players')
         self.assertEqual(expected_message, message_list[0])
+
+    def test_mission_featured_default(self):
+        """Missions should started with a featured status of False."""
+        mission = Mission()
+        self.assertFalse(mission.featured)
+
+    def test_mission_update_featured(self):
+        """You should be able to update featured for a Mission."""
+        mission = Mission()
+        mission.featured = True
+        self.assertTrue(mission.featured)
