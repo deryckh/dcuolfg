@@ -1,30 +1,25 @@
-===========
-Simple TODO
-===========
+====
+TODO
+====
 
-** Site structure
+Getting close. Some parts remain:
 
-    Need a basic site/directory layout:
-        * Homepage
-        * User page
-        * Character page (possibly)
-        * LFG tool itself
+== Models ==
 
+ * Leagues
+ * Update for translations
 
-** Core Objects
+== Web ==
 
-    Need objects to represent:
-        * Characters
-        * Leagues
-        * Missions (or instances, alerts, raids, etc.)
+ * API for client
 
+== UI ==
 
+ * Browsable when not auth'ed
+ * Web app, LFG tool when auth'ed
 
-Story:
+== Deployment ==
 
-I come to the homepage and see latest people looking for groups
-on DCUO.  I can browse by role, event, or time available.  I can
-shout in world or schedule in site calendar.  I can +1 and
-comment about toons I liked running with.
-
-(Seems like this is more toon-based then event-based.)
+ * Servers, or instances
+ * Tech (postgres, apache, etc.)
+ * Deployment mechanism
