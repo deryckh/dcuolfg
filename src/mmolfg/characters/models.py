@@ -56,6 +56,7 @@ class Character(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(30)])
     combat_rating = models.IntegerField(null=True, blank=True, default=0)
     skill_points = models.IntegerField(blank=True, null=True, default=0)
+    league = models.CharField(blank=True, max_length=100)
     image = ImageField(upload_to='img/characters/%Y/%m/%d', blank=True)
     is_main = models.BooleanField(default=False)
     lfg = models.BooleanField(default=False)

@@ -199,6 +199,17 @@ class TestCharacterModel(unittest.TestCase):
         toon.skill_points = 101
         self.assertEqual(101, toon.skill_points)
 
+    def test_character_without_league(self):
+        """A Character can be created without a league."""
+        toon = Character()
+        self.assertEqual('', toon.league)
+
+    def test_character_update_league(self):
+        """You should be able to update a Character's league."""
+        toon = Character()
+        toon.league = 'Exobyte Titans'
+        self.assertEqual('Exobyte Titans', toon.league)
+
     def test_character_is_main_default(self):
         """A Character should not be set is_main by default."""
         toon = Character()
