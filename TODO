@@ -4,14 +4,12 @@ TODO
 
 Getting close. Some parts remain:
 
-== Models ==
-
- * Leagues
- * Update for translations
-
 == Web ==
 
- * API for client
+ * Decide how to do API for client
+    -- rest api
+    -- json objects passed around templates
+    -- or what?
 
 == UI ==
 

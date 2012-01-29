@@ -45,34 +45,44 @@ class Character(models.Model):
         (7, 'Electricity'),
     )
 
-    player = models.ForeignKey(User, related_name='characters')
-    name = models.CharField(max_length=75)
-    server = models.IntegerField(choices=CHARACTER_SERVER_CHOICES)
-    role = models.IntegerField(choices=CHARACTER_ROLE_CHOICES)
-    powerset = models.IntegerField(choices=CHARACTER_POWERSET_CHOICES)
-    description = models.TextField(blank=True)
+    player = models.ForeignKey(
+        User, related_name='characters', verbose_name=_('player'))
+    name = models.CharField(_('name'), max_length=75)
+    server = models.IntegerField(
+        _('server'), choices=CHARACTER_SERVER_CHOICES)
+    role = models.IntegerField(_('role'), choices=CHARACTER_ROLE_CHOICES)
+    powerset = models.IntegerField(
+        _('powerset'), choices=CHARACTER_POWERSET_CHOICES)
+    description = models.TextField(_('description'), blank=True)
     level = models.IntegerField(
-        blank=True, null=True, default=1,
+        _('level'), blank=True, null=True, default=1,
         validators=[MinValueValidator(0), MaxValueValidator(30)])
-    combat_rating = models.IntegerField(null=True, blank=True, default=0)
-    skill_points = models.IntegerField(blank=True, null=True, default=0)
-    league = models.CharField(blank=True, max_length=100)
-    image = ImageField(upload_to='img/characters/%Y/%m/%d', blank=True)
-    is_main = models.BooleanField(default=False)
-    lfg = models.BooleanField(default=False)
+    combat_rating = models.IntegerField(
+        _('combat_rating'), null=True, blank=True, default=0)
+    skill_points = models.IntegerField(
+        _('skill_points'), blank=True, null=True, default=0)
+    league = models.CharField(_('league'), blank=True, max_length=100)
+    image = ImageField(
+        _('image'), upload_to='img/characters/%Y/%m/%d', blank=True)
+    is_main = models.BooleanField(_('is_main'), default=False)
+    lfg = models.BooleanField(_('lfg'), default=False)
 
     # The dates make use of auto_now and auto_now_add options, but
     # also include a "default" value.  This is so that Character objects
     # work sanely without having to call save on them.
     date_added = models.DateTimeField(
-        auto_now_add=True, auto_now=False, default=datetime.datetime.now)
+        _('date_added'), auto_now_add=True, auto_now=False,
+        default=datetime.datetime.now)
     date_updated = models.DateTimeField(
-        auto_now_add=True, auto_now=True, default=datetime.datetime.now)
+        _('date_updated'), auto_now_add=True, auto_now=True,
+        default=datetime.datetime.now)
 
     # Denormalized vote counts, to make it easier and faster
     # to get at the CharacterVote data.
-    positive_votes = models.PositiveIntegerField(default=0)
-    negative_votes = models.PositiveIntegerField(default=0)
+    positive_votes = models.PositiveIntegerField(
+        _('positive_votes'), default=0)
+    negative_votes = models.PositiveIntegerField(
+        _('negative_votes'), default=0)
 
     objects = CharacterManager()
 
@@ -95,8 +105,6 @@ class Character(models.Model):
             return server_value[0]
         return None
 
-    # XXX: Not sure how to model the "looking_for bit yet."
-
 
 class CharacterVote(models.Model):
     """Votes for or against a Character."""
@@ -106,9 +114,11 @@ class CharacterVote(models.Model):
         (1, '+1'),
     )
 
-    character = models.ForeignKey(Character, related_name='votes_for')
-    voter = models.ForeignKey(Character, related_name='votes_by')
-    vote = models.IntegerField(choices=CHARACTER_VOTE_CHOICES)
+    character = models.ForeignKey(
+        Character, related_name='votes_for', verbose_name=_('character'))
+    voter = models.ForeignKey(
+        Character, related_name='votes_by', verbose_name=_('voter'))
+    vote = models.IntegerField(_('vote'), choices=CHARACTER_VOTE_CHOICES)
 
     class Meta:
         """Metadata for CharacterVote model."""
