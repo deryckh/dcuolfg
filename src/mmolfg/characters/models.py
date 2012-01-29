@@ -137,11 +137,18 @@ class CharacterVote(models.Model):
 class LFGRequest(models.Model):
     """The main object for tracking what Characters are LFG for."""
 
+    LFG_CONTACT_CHOICES = (
+        (0, 'Send in-game tell before sending invite.'),
+        (1, 'Blind invites are fine.'),
+        (2, 'See description for more details.'),
+    )
+
     character = models.ForeignKey(
         Character, verbose_name=_('character'), related_name='requests')
     mission = models.ForeignKey(
         Mission, verbose_name=_('mission'), related_name='requests')
     description = models.TextField(_('description'), blank=True)
+    contact_info = models.IntegerField(default=0, choices=LFG_CONTACT_CHOICES)
 
     class Meta:
         """Meta options for LFGRequest."""

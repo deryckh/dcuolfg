@@ -64,6 +64,20 @@ class TestLFGRequest(unittest.TestCase):
         lfg.description = description
         self.assertEqual(description, lfg.description)
 
+    def test_lfg_request_contact_info_default(self):
+        """LFGRequests should have a default contact_info."""
+        lfg = LFGRequest()
+        self.assertEqual(0, lfg.contact_info)
+        self.assertEqual(
+            'Send in-game tell before sending invite.',
+            lfg.get_contact_info_display())
+
+    def test_lfg_request_update_contact_info(self):
+        """You should be able to update contact_info for an LFGRequest."""
+        lfg = LFGRequest()
+        lfg.contact_info = 1
+        self.assertEqual(1, lfg.contact_info)
+
     def test_character_has_lfg_requests(self):
         """A Character should be associated with his/her LFGRequests."""
         player = make_player()
