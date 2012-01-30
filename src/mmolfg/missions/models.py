@@ -6,6 +6,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
 
+from mmolfg.missions.managers import MissionManager
+
 
 class Location(models.Model):
     """Mission Location object."""
@@ -61,6 +63,8 @@ class Mission(models.Model):
     num_players = models.IntegerField(
         _('number of players'), choices=MISSION_NUM_PLAYER_CHOICES, default=4)
     featured = models.BooleanField(_('featured'), default=False)
+
+    objects = MissionManager()
 
     class Meta():
         """Meta options for Mission."""
