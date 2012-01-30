@@ -10,4 +10,4 @@ class MissionManager(models.Manager):
 
     def featured(self):
         """Returns featured Mission objects."""
-        return self.get_query_set().filter(featured=True)
+        return self.get_query_set().select_related().filter(featured=True)
