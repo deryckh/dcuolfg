@@ -12,5 +12,6 @@ def index(request):
     missions = Mission.objects.featured()
     data = {
         'missions': missions,
+        'mission_count': Mission.objects.featured_count(),
     }
     return render(request, 'home.html', data)

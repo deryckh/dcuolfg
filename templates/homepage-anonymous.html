@@ -16,7 +16,7 @@
         <h2 class="headline">Locations</h2>
         <div class="yui3-g">
             {% for mission in missions %}
-            <div class="yui3-u-1-5">
+            <div class="yui3-u-1-{{ mission_count }}">
                 <img src="{{ MEDIA_URL }}/{{ mission.location.image }}" alt="" />
             </div>
             {% endfor %}
