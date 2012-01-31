@@ -1,3 +1,4 @@
+{% load thumbnail %}
     <div class="yui3-g" id="blurb">
       <div class="yui3-u-2-5">
           {% include "logo.html" %}
@@ -15,11 +16,13 @@
       <div class="yui3-u-1">
         <h2 class="headline">Locations</h2>
         <div class="yui3-g">
-            {% for mission in missions %}
-            <div class="yui3-u-1-{{ mission_count }}">
-                <img src="{{ MEDIA_URL }}/{{ mission.location.image }}" alt="" />
+        {% for mission in missions %}
+        {% thumbnail mission.location.image "x120" crop="center" as img %}
+            <div class="yui3-u-1-{{ mission_count }} featured">
+                <img src="{{ MEDIA_URL }}/{{ img.url }}" alt="" />
             </div>
-            {% endfor %}
+        {% endthumbnail %}
+        {% endfor %}
         </div>
       </div>
     </div>

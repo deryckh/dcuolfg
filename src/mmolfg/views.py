@@ -9,9 +9,9 @@ from mmolfg.missions.models import Mission
 
 def index(request):
     """The site's main index/home page."""
-    missions = Mission.objects.featured()
+    missions = list(Mission.objects.featured())
     data = {
         'missions': missions,
-        'mission_count': Mission.objects.featured_count(),
+        'mission_count': len(missions),
     }
     return render(request, 'home.html', data)
