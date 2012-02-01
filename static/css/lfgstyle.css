@@ -130,7 +130,7 @@ h2.headline {
 }
 .featured {
   background: #009DD8;
-  border: 1px inset #020C15;
+  border: 1px outset #020C15;
   overflow: hidden;
   margin: 0 1px;
   height: 300px;
@@ -141,4 +141,9 @@ h2.headline {
 .featured-about {
   font-style: italic;
   margin: 15px 10px 15px 10px;
+}
+.featured-lfg {
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 20px 20px;
 }
