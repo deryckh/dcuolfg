@@ -117,6 +117,23 @@ class TestMissionModel(unittest.TestCase):
         mission.num_players = 8
         self.assertEqual(8, mission.num_players)
 
+    def test_mission_without_about(self):
+        """Mission objects should be created without any about text."""
+        mission = Mission()
+        self.assertEqual('', mission.about)
+
+    def test_mission_update_about(self):
+        """You should be able to update about for a Mission."""
+        mission = Mission()
+        about = """
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.
+        """
+        mission.about = about
+        self.assertEqual(about, mission.about)
+
     def test_mission_num_players_possible(self):
         """You should not be able to specify arbitrary num_players."""
         mission = Mission()

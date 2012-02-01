@@ -62,6 +62,7 @@ class Mission(models.Model):
         Location, verbose_name=_('location'), related_name='missions')
     num_players = models.IntegerField(
         _('number of players'), choices=MISSION_NUM_PLAYER_CHOICES, default=4)
+    about = models.TextField(_('about'), blank=True)
     featured = models.BooleanField(_('featured'), default=False)
 
     objects = MissionManager()
@@ -82,3 +83,8 @@ class Mission(models.Model):
         if self.mode is not None:
             return u'%s %s %s' % (full_name, self.get_mode_display(), mission)
         return u'%s %s' % (full_name, mission)
+
+    @models.permalink
+    def get_absolute_url(self):
+        """Returns the URL for a Mission."""
+        return ('mission_index', (), {'name': self.short_name})

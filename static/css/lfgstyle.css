@@ -129,10 +129,16 @@ h2.headline {
   color: red;
 }
 .featured {
+  background: #009DD8;
   border: 1px inset #020C15;
   overflow: hidden;
   margin: 0 1px;
   height: 300px;
   position: relative;
   left: -10px;
+  padding: 3px 0 0 0;
+}
+.featured-about {
+  font-style: italic;
+  margin: 15px 10px 15px 10px;
 }

@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('mmolfg.accounts.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'missions/', include('mmolfg.missions.urls')),
     url(r'^$', views.index, name='home'),
 )
 
