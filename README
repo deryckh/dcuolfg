@@ -11,3 +11,13 @@ it will be used to build a site for DCUO primarily.
 Frankly, I play DCUO a lot and it really needs a better LFG too.
 Let's see if the web and this code can conspire to provide this
 missing functionality.
+
+= Requirements =
+
+Most of mmolfg builds in tree, using virtualenv and buildout.  There are
+only a handful of system prerequisites.
+
+ * virtualenv
+ * fabric
+ * libjpeg
+ * memcached
