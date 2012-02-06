@@ -59,6 +59,20 @@ class TestMissionModel(unittest.TestCase):
         message_list = err.exception.message_dict.get('name')
         self.assertEqual(expected_message, message_list[0])
 
+    def test_mission_slug(self):
+        """A mission should have a slug when created."""
+        mission = Mission(slug='batcave')
+        self.assertEqual('batcave', mission.slug)
+
+    def test_mission_slug_required(self):
+        """You should not be able to create a mission without a slug."""
+        mission = Mission()
+        with self.assertRaises(ValidationError) as err:
+            mission.full_clean()
+        expected_message = 'This field cannot be blank.'
+        message_list = err.exception.message_dict.get('slug')
+        self.assertEqual(expected_message, message_list[0])
+
     def test_mission_short_name(self):
         """A Mission should have a short_name when created."""
         mission = Mission(short_name='LOA')

@@ -14,7 +14,7 @@ from mmolfg.missions.models import (
 
 class LocationAdmin(AdminImageMixin, admin.ModelAdmin):
     """Admin class for Location."""
-    pass
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class MissionAdmin(admin.ModelAdmin):
@@ -29,6 +29,7 @@ class MissionAdmin(admin.ModelAdmin):
         'mission_type',
         'featured',
     )
+    prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Mission, MissionAdmin)

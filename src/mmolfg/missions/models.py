@@ -13,6 +13,7 @@ class Location(models.Model):
     """Mission Location object."""
 
     name = models.CharField(max_length=100)
+    slug = models.SlugField()
     image = ImageField(
         _('image'), upload_to='img/locations/%Y/%m/%d', blank=True)
 
@@ -57,6 +58,7 @@ class Mission(models.Model):
     mode = models.IntegerField(
         _('mode'), blank=True, null=True, choices=MISSION_MODE_CHOICES)
     name = models.CharField(_('name'), max_length=100)
+    slug = models.SlugField()
     short_name = models.CharField(_('short name'), max_length=25)
     location = models.ForeignKey(
         Location, verbose_name=_('location'), related_name='missions')
