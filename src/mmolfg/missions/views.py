@@ -13,18 +13,18 @@ from mmolfg.missions.models import (
 )
 
 
-def mission_index(request, name):
+def mission_index(request, slug):
     """Returns an index page for a Mission."""
-    mission = get_object_or_404(Mission, short_name=name)
+    mission = get_object_or_404(Mission, slug=slug)
     data = {
         'mission': mission,
     }
     return render(request, 'missions/mission_index.html', data)
 
 
-def location_index(request, name):
+def location_index(request, slug):
     """Returns an index page for a Location."""
-    location = get_object_or_404(Location, name=name)
+    location = get_object_or_404(Location, slug=slug)
     data = {
         'location': location,
     }

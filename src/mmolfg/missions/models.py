@@ -89,4 +89,4 @@ class Mission(models.Model):
     @models.permalink
     def get_absolute_url(self):
         """Returns the URL for a Mission."""
-        return ('mission_index', (), {'name': self.short_name})
+        return ('mission_index', (), {'slug': self.slug})
