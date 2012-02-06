@@ -59,7 +59,7 @@ class Mission(models.Model):
         _('mode'), blank=True, null=True, choices=MISSION_MODE_CHOICES)
     name = models.CharField(_('name'), max_length=100)
     slug = models.SlugField()
-    nick_name = models.CharField(_('short name'), max_length=25)
+    nick_name = models.CharField(_('nick name'), max_length=25)
     location = models.ForeignKey(
         Location, verbose_name=_('location'), related_name='missions')
     num_players = models.IntegerField(
