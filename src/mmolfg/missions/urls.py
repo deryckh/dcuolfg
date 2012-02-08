@@ -13,6 +13,8 @@ from mmolfg.missions.views import (
 )
 
 urlpatterns = patterns('',
-    url(r'locations/(?P<slug>\w+)/$', location_index, name='location_index'),
-    url(r'(?P<slug>\w+)/$', mission_index, name='mission_index'),
+    url(
+        r'locations/(?P<slug>[-\w]+)/$', location_index,
+        name='location_index'),
+    url(r'(?P<slug>[-\w]+)/$', mission_index, name='mission_index'),
 )
