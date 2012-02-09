@@ -75,17 +75,13 @@ class Mission(models.Model):
 
     def __unicode__(self):
         """unicode representation of a Mission."""
-        mission_type = self.get_mission_type_display()
         name = self.name
         location_name = self.location.name
         if name != location_name:
             full_name = '%s: %s' % (self.location.name, self.name)
         else:
             full_name = name
-        if self.mode is not None:
-            return u'%s %s %s' % (
-                full_name, self.get_mode_display(), mission_type)
-        return u'%s %s' % (full_name, mission_type)
+        return full_name
 
     @models.permalink
     def get_absolute_url(self):
