@@ -138,7 +138,7 @@ class LFGRequest(models.Model):
     """The main object for tracking what Characters are LFG for."""
 
     LFG_CONTACT_CHOICES = (
-        (0, 'Send in-game tell before sending invite.'),
+        (0, 'In-game tell before invite.'),
         (1, 'Blind invites are fine.'),
         (2, 'See description for more details.'),
     )

@@ -69,6 +69,7 @@ form input {
  * Link: #20C3FF
  *
  * Green:  #98F153
+ * Dark Green: #184718
  * White-blue: #BDE7FD;
  * Red: #CE0014
  */
@@ -94,6 +95,13 @@ form input {
   background-image: -webkit-linear-gradient(top, #009DD8, #022D4D);
   background-image: -moz-linear-gradient(top, #009DD8, #022D4D);
 }
+.highlight {
+  font-weight: bold;
+  font-style: italic;
+  background: #022D4D;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
 
 /** Content ************************/
 #blurb {
@@ -112,6 +120,18 @@ form input {
   border: 1px solid #BDE7FD;
   margin: 0 auto 5px auto;
   padding: 10px;
+}
+.blurb-row a,
+.blurb-row a:link {
+  color: #022D4D;
+  text-decoration: underline;
+  padding: 1px 3px;
+}
+.blurb-row a:link:hover,
+.blurb-row a:visited:hover {
+  background: #022D4D;
+  color: #FFF;
+  font-weight: normal;
 }
 h2.headline {
   position: relative;
@@ -138,12 +158,53 @@ h2.headline {
   left: -10px;
   padding: 3px 0 0 0;
 }
-.featured-about {
-  font-style: italic;
+.featured .about {
   margin: 15px 10px 15px 10px;
 }
+.about {
+  font-style: italic;
+}
 .featured-lfg {
-    position: absolute;
-    bottom: 0;
-    margin: 0 0 20px 20px;
+  position: absolute;
+  bottom: 0;
+  margin: 0 0 20px 20px;
+}
+.mission-index {
+  background: #009DD8;
+  height: inherit;
+}
+.mission-about {
+  overflow: hidden;
+}
+.mission-about img {
+  position: relative;
+  left: -170px;
+}
+.mission-lfg {
+  width: 95%;
+  margin: auto;
+}
+
+/* LFG tools
+******************************/
+.lfg-info {
+  margin: 15px 0;
+  background-image: -webkit-linear-gradient(top, #022D4D, #009DD8);
+  background-image: -moz-linear-gradient(top, #022D4D, #009DD8);
+  border-radius: 5px;
+}
+.lfg-info p {
+  text-align: center;
+}
+.lfg-heading p {
+  background-image: -webkit-linear-gradient(top, #98F153, #184718);
+  background-image: -moz-linear-gradient(top, #98F153, #184718);
+  text-shadow: 0em 0em 0.3em black;
+  width: 90%;
+  margin: 10px auto;
+  border-radius: 3px;
+  font-size: 1em;
+}
+.lfg-row {
+  border-top: 1px solid #CCC;
 }
