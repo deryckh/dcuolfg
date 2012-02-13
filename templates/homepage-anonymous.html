@@ -18,23 +18,24 @@
         <div class="yui3-g">
         {% for mission in missions %}
         {% thumbnail mission.location.image "x120" crop="center" as img %}
-            <div class="yui3-u-1-{{ mission_count }} featured">
-                <a href="{{ mission.get_absolute_url }}">
-                    <img src="{{ MEDIA_URL }}{{ img.url }}" alt="" />
-                </a>
-                <div>{{ mission }}</div>
-                <div>{{ mission.num_players }} person
-                    {{ mission.get_mission_type_display|lower }}</div>
-                <div class="about">
-                    {{ mission.about }}
-                </div>
-                <div class="featured-lfg">
-                    {% with mission.requests.count as count %}
-                    Currently
-                    <a href="#">{{ count }} player{{ count|pluralize }}</a>
-                    looking for group.
-                    {% endwith %}
-                </div>
+            <div class="yui3-u-1-{{ mission_count }}">
+                <div class="featured">
+                    <a href="{{ mission.get_absolute_url }}">
+                        <img src="{{ MEDIA_URL }}{{ img.url }}" alt="" />
+                    </a>
+                    <div>{{ mission }}</div>
+                    <div class="featured-lfg">
+                        {% with mission.requests.count as count %}
+                        Currently
+                        <a href="#">{{ count }} player{{ count|pluralize }}</a>
+                        LFG for this {{ mission.num_players }} person
+                        {{ mission.get_mission_type_display|lower }}.
+                        {% endwith %}
+                    </div>
+                    <div class="about">
+                        {{ mission.about }}
+                    </div>
+                </div> <!-- Close .featured -->
             </div>
         {% endthumbnail %}
         {% endfor %}
