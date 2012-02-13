@@ -2,7 +2,7 @@
     {% with mission.requests.count as count %}
     Currently {{ count }} player{{ count|pluralize }}
         LFG for this {{ mission.num_players }} person
-    {{ mission.get_mission_type_display|lower }}</span>.
+    {{ mission.get_mission_type_display|lower }}.
     {% ifnotequal count 0  %}
         <div class="lfg-info">
             <div class="yui3-g lfg-heading">
@@ -92,8 +92,7 @@
                 {% endwith %}
             </div>
             {% endfor %}
-            </div> <!-- Close lfg-info -->
-        </div>
+        </div> <!-- Close .lfg-info -->
     {% endifnotequal %}
     {% endwith %}
-</div>
+</div> <!-- Close .mission-lfg -->

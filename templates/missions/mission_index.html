@@ -9,12 +9,16 @@
             {% thumbnail mission.location.image "x400" crop="right" as img %}
                <img src="{{ MEDIA_URL }}{{ img.url }}" alt="" />
             {% endthumbnail %}
-            <div class="about">
-                {{ mission.about }}
-            </div>
+                <div class="about">
+                    {{ mission.about }}
+                </div>
             </div>
             <div class="yui3-u-3-4">
                 {% include "missions/mission-lfg.html" %}
+                <p class="promo">If you would like to register yourself
+                    as LFG for {{ mission }}, please
+                    <a href="/accounts/register/">create an account</a>
+                    or <a href="/accounts/login/">login</a>.</p>
             </div>
         </div>
     </div>
