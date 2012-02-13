@@ -197,13 +197,10 @@ h2.headline {
   text-align: center;
 }
 .lfg-heading p {
-  background-image: -webkit-linear-gradient(top, #98F153, #184718);
-  background-image: -moz-linear-gradient(top, #98F153, #184718);
-  text-shadow: 0em 0em 0.3em black;
   width: 90%;
   margin: 10px auto;
-  border-radius: 3px;
   font-size: 1em;
+  color: #009DD8;
 }
 .lfg-row {
   border-top: 1px solid #CCC;
