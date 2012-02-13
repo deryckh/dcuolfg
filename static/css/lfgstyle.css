@@ -125,14 +125,14 @@ form input {
   margin: 0 auto 5px auto;
   padding: 10px;
 }
-.blurb-row a,
-.blurb-row a:link {
+.featured-lfg a,
+.featured-lfg a:link {
   color: #022D4D;
   text-decoration: underline;
   padding: 1px 3px;
 }
-.blurb-row a:link:hover,
-.blurb-row a:visited:hover {
+.featured-lfg a:link:hover,
+.featured-lfg a:visited:hover {
   background: #022D4D;
   color: #FFF;
   font-weight: normal;
