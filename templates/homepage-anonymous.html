@@ -27,7 +27,8 @@
                     <div class="featured-lfg">
                         {% with mission.requests.count as count %}
                         Currently
-                        <a href="#">{{ count }} player{{ count|pluralize }}</a>
+                        <a href="{{ mission.get_absolute_url }}">{{ count }}
+                        player{{ count|pluralize }}</a>
                         LFG for this {{ mission.num_players }} person
                         {{ mission.get_mission_type_display|lower }}.
                         {% endwith %}

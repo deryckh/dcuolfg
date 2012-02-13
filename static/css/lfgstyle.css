@@ -155,15 +155,20 @@ h2.headline {
 }
 .about {
   font-style: italic;
+  color: #020C15;
 }
 .featured-lfg a,
-.featured-lfg a:link {
+.featured-lfg a:link,
+.promo a,
+.promo a:link {
   color: #022D4D;
   text-decoration: underline;
   padding: 1px 3px;
 }
 .featured-lfg a:link:hover,
-.featured-lfg a:visited:hover {
+.featured-lfg a:visited:hover,
+.promo a:link:hover,
+.promo a:visited:hover {
   background: #022D4D;
   color: #FFF;
   font-weight: normal;
