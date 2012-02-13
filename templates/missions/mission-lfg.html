@@ -1,0 +1,99 @@
+<div class="mission-lfg">
+    {% with mission.requests.count as count %}
+    Currently {{ count }} player{{ count|pluralize }}
+        LFG for this {{ mission.num_players }} person
+    {{ mission.get_mission_type_display|lower }}</span>.
+    {% ifnotequal count 0  %}
+        <div class="lfg-info">
+            <div class="yui3-g lfg-heading">
+                <div class="yui3-u-1-8">
+                    <p>Character</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>Role</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>Powers</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>Level</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>CR</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>SP</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>Server</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>Contact info</p>
+                </div>
+            </div>
+            {% for request in mission.requests.all  %}
+            <div class="yui3-g lfg-row">
+                {% with request.character as toon %}
+                <div class="yui3-u-1-8">
+                    <p>{{ toon.name }}</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>
+                        {% ifequal toon.role 0 %}
+                        <img
+                        src="{{ STATIC_URL }}/img/dps.png"
+                        title="DPS"
+                        alt="DPS" />
+                        {% endifequal %}
+                        {% ifequal toon.role 1 %}
+                        <img
+                        src="{{ STATIC_URL }}/img/controller.png"
+                        title="Controller"
+                        alt="Controller" />
+                        {% endifequal %}
+                        {% ifequal toon.role 2 %}
+                        <img
+                        src="{{ STATIC_URL }}/img/healer.png"
+                        title="Healer"
+                        alt="Healer" />
+                        {% endifequal %}
+                        {% ifequal toon.role 3 %}
+                        <img
+                        title="Tank"
+                        src="{{ STATIC_URL }}/img/tank.png"
+                        alt="Tank" />
+                        {% endifequal %}
+                    </p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>{{ toon.get_powerset_display }}</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>{{ toon.level }}</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>{{ toon.combat_rating }}</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>{{ toon.skill_points }}</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    <p>{{ toon.get_server_display }}</p>
+                </div>
+                <div class="yui3-u-1-8">
+                    {% with request.contact_info as contact %}
+                    {% ifnotequal contact 2 %}
+                    <p>{{ request.get_contact_info_display }}</p>
+                    {% else %}
+                    <p>{{ request.description }}</p>
+                    {% endifnotequal %}
+                    {% endwith %}
+                </div>
+                {% endwith %}
+            </div>
+            {% endfor %}
+            </div> <!-- Close lfg-info -->
+        </div>
+    {% endifnotequal %}
+    {% endwith %}
+</div>
