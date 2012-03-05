@@ -2,7 +2,7 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Views for Mission and Location in mmolfg.
+Views for Mission and Location in dcuolfg.
 """
 
 from django.shortcuts import (
@@ -10,7 +10,7 @@ from django.shortcuts import (
     render,
 )
 
-from mmolfg.missions.models import (
+from dcuolfg.missions.models import (
     Mission,
     Location,
 )

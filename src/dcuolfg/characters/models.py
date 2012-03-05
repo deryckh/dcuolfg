@@ -2,7 +2,7 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Models for characters in mmolfg.
+Models for characters in dcuolfg.
 """
 
 import datetime
@@ -16,8 +16,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
 
-from mmolfg.characters.managers import CharacterManager
-from mmolfg.missions.models import Mission
+from dcuolfg.characters.managers import CharacterManager
+from dcuolfg.missions.models import Mission
 
 
 class Character(models.Model):

@@ -2,12 +2,12 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Test suite for accounts app in mmolfg.
+Test suite for accounts app in dcuolfg.
 """
 
 import unittest
 
-from mmolfg.accounts.tests.accounts import TestProfileModel
+from dcuolfg.accounts.tests.accounts import TestProfileModel
 
 UNIT_TESTS = (
     TestProfileModel,

@@ -2,12 +2,12 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Test suite for mmolfg.
+Test suite for dcuolfg.
 """
 
 import unittest
 
-from mmolfg.characters.tests.characters import TestBaseTest
+from dcuolfg.characters.tests.characters import TestBaseTest
 
 UNIT_TESTS = (
     TestBaseTest,

@@ -7,7 +7,7 @@ Test suite for missions app in DCUO LFG.
 
 import unittest
 
-from mmolfg.missions.tests.missions import TestMissionModel
+from dcuolfg.missions.tests.missions import TestMissionModel
 
 UNIT_TESTS = (
     TestMissionModel,

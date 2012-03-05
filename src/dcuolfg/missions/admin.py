@@ -9,7 +9,7 @@ from django.contrib import admin
 
 from sorl.thumbnail.admin import AdminImageMixin
 
-from mmolfg.missions.models import (
+from dcuolfg.missions.models import (
     Location,
     Mission,
 )

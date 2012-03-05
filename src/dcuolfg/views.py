@@ -7,7 +7,7 @@ MMOLFG site-wide views.
 
 from django.shortcuts import render
 
-from mmolfg.missions.models import Mission
+from dcuolfg.missions.models import Mission
 
 
 def index(request):

@@ -2,14 +2,14 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Test suite for characters app in mmolfg.
+Test suite for characters app in dcuolfg.
 """
 
 import unittest
 
-from mmolfg.characters.tests.characters import TestCharacterModel
-from mmolfg.characters.tests.lfg import TestLFGRequest
-from mmolfg.characters.tests.votes import TestCharacterVotes
+from dcuolfg.characters.tests.characters import TestCharacterModel
+from dcuolfg.characters.tests.lfg import TestLFGRequest
+from dcuolfg.characters.tests.votes import TestCharacterVotes
 
 
 UNIT_TESTS = (

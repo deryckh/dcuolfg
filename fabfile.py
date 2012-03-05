@@ -9,7 +9,7 @@ from fabric.api import *
 def clean():
     """Clean up after a local build."""
     local('rm -rf bin develop-eggs downloads eggs include lib parts '
-          '.installed.cfg .Python src/mmolfg.egg-info')
+          '.installed.cfg .Python src/dcuolfg.egg-info')
     local('find . -name \*.pyc|xargs rm')
 
 def init():

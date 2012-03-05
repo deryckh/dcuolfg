@@ -10,7 +10,7 @@ import unittest
 from django.core.exceptions import ValidationError
 from sorl.thumbnail import ImageField
 
-from mmolfg.missions.models import (
+from dcuolfg.missions.models import (
     Location,
     Mission,
 )

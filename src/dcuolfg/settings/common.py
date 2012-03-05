@@ -15,7 +15,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 DATABASES = {
     'default': {
         'ENGINE': 'sqlite3',
-        'NAME': '/tmp/mmolfg.db',
+        'NAME': '/tmp/dcuolfg.db',
     }
 }
 
@@ -41,7 +41,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'mmolfg.urls'
+ROOT_URLCONF = 'dcuolfg.urls'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -55,7 +55,7 @@ INSTALLED_APPS = (
     'registration',
     'sorl.thumbnail',
     'debug_toolbar',
-    'mmolfg.accounts',
-    'mmolfg.characters',
-    'mmolfg.missions',
+    'dcuolfg.accounts',
+    'dcuolfg.characters',
+    'dcuolfg.missions',
 )

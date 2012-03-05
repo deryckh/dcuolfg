@@ -7,12 +7,12 @@ Tests for LFG-related Character objects.
 
 import unittest
 
-from mmolfg.characters.models import (
+from dcuolfg.characters.models import (
     Character,
     LFGRequest,
 )
-from mmolfg.characters.tests.utils import make_player
-from mmolfg.missions.models import (
+from dcuolfg.characters.tests.utils import make_player
+from dcuolfg.missions.models import (
     Location,
     Mission,
 )

@@ -2,7 +2,7 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Tests for Character objects in mmolfg.
+Tests for Character objects in dcuolfg.
 """
 
 import datetime
@@ -12,8 +12,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from sorl.thumbnail import ImageField
 
-from mmolfg.characters.models import Character
-from mmolfg.characters.tests.utils import make_player
+from dcuolfg.characters.models import Character
+from dcuolfg.characters.tests.utils import make_player
 
 
 class TestCharacterModel(unittest.TestCase):

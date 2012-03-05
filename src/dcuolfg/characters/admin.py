@@ -9,7 +9,7 @@ from django.contrib import admin
 
 from sorl.thumbnail.admin import AdminImageMixin
 
-from mmolfg.characters.models import (
+from dcuolfg.characters.models import (
     Character,
     LFGRequest,
 )

@@ -2,7 +2,7 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-URLS used for missions in mmolfg.
+URLS used for missions in dcuolfg.
 """
 
 from django.conf.urls.defaults import (
@@ -10,7 +10,7 @@ from django.conf.urls.defaults import (
     url,
 )
 
-from mmolfg.missions.views import (
+from dcuolfg.missions.views import (
     location_index,
     mission_index,
 )

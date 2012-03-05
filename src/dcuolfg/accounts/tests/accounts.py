@@ -2,7 +2,7 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-Tests for Profile objects in mmolfg.
+Tests for Profile objects in dcuolfg.
 """
 
 import unittest
@@ -10,8 +10,8 @@ import unittest
 from django.core.exceptions import ValidationError
 from sorl.thumbnail import ImageField
 
-from mmolfg.accounts.models import Profile
-from mmolfg.characters.models import Character
+from dcuolfg.accounts.models import Profile
+from dcuolfg.characters.models import Character
 
 
 class TestProfileModel(unittest.TestCase):

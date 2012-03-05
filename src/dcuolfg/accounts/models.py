@@ -10,7 +10,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
 
-from mmolfg.characters.models import Character
+from dcuolfg.characters.models import Character
 
 
 class Profile(models.Model):

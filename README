@@ -14,7 +14,7 @@ missing functionality.
 
 = Requirements =
 
-Most of mmolfg builds in tree, using virtualenv and buildout.  There are
+Most of dcuolfg builds in tree, using virtualenv and buildout.  There are
 only a handful of system prerequisites.
 
  * virtualenv

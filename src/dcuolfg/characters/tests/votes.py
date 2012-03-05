@@ -7,11 +7,11 @@ Tests for voting system for Characters.
 
 import unittest
 
-from mmolfg.characters.models import (
+from dcuolfg.characters.models import (
     Character,
     CharacterVote,
 )
-from mmolfg.characters.tests.utils import make_player
+from dcuolfg.characters.tests.utils import make_player
 
 
 class TestCharacterVotes(unittest.TestCase):

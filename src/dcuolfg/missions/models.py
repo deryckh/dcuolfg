@@ -9,7 +9,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
 
-from mmolfg.missions.managers import MissionManager
+from dcuolfg.missions.managers import MissionManager
 
 
 class Location(models.Model):
