@@ -1,12 +1,15 @@
-=======
-MMO LFG
+========
+DCUO LFG
 ========
 
-An LFG tool for MMOs.
+An LFG tool for DC Universe Online.
 
-This code will be used to build a similarly named site, DCUO LFG.
-There's no reason it couldn't power any social LFG-type site, but
-it will be used to build a site for DCUO primarily.
+This code will be used to build an LFG community web site for the
+game DC Universe Online.  The site will be hosted at:
+
+http://dcuolfg.com/
+
+(Nothing is up for the site yet.)
 
 Frankly, I play DCUO a lot and it really needs a better LFG too.
 Let's see if the web and this code can conspire to provide this
@@ -21,3 +24,20 @@ only a handful of system prerequisites.
  * fabric
  * libjpeg
  * memcached
+
+= Getting Started =
+
+Once the above requirements are installed, you can build the tree
+for development with:
+
+ $ fab devel
+
+Tests can then be run with:
+
+ $ ./bin/test
+
+To start working with a development environment run:
+
+ $ ./bin/dev syncdb
+ $ ./bin/dev loaddata missions
+ $ ./bin/dev runserver

@@ -72,7 +72,7 @@ class TestLFGRequest(unittest.TestCase):
         lfg = LFGRequest()
         self.assertEqual(0, lfg.contact_info)
         self.assertEqual(
-            'Send in-game tell before sending invite.',
+            'In-game tell before invite.',
             lfg.get_contact_info_display())
 
     def test_lfg_request_update_contact_info(self):

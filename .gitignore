@@ -9,6 +9,7 @@ dist
 eggs
 downloads
 lib
+local
 include
 media/cache
 ID
