@@ -1,3 +1,6 @@
+# Copyright 2012 Deryck Hodge.  This software is licensed under the
+# GNU Lesser General Public License version 3 (see the file LICENSE).
+
 from django.contrib import admin
 
 from mmolfg.accounts.models import Profile
