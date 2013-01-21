@@ -21,7 +21,6 @@ Most of dcuolfg builds in tree, using virtualenv and buildout.  There are
 only a handful of system prerequisites.
 
  * virtualenv
- * fabric
  * libjpeg
  * memcached
 
@@ -30,14 +29,16 @@ only a handful of system prerequisites.
 Once the above requirements are installed, you can build the tree
 for development with:
 
- $ fab devel
+ $ virtualenv .
+ $ ./bin/python pip install -r requirements.txt
+ $ ./bin/python setup.py install
 
 Tests can then be run with:
 
- $ ./bin/test
+ $ ./bin/django-admin.py test
 
 To start working with a development environment run:
 
- $ ./bin/dev syncdb
- $ ./bin/dev loaddata missions
- $ ./bin/dev runserver
+ $ ./bin/django-admin.py syncdb
+ $ ./bin/django-admin.py loaddata missions
+ $ ./bin/django-admin.py runserver

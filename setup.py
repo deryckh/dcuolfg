@@ -11,8 +11,7 @@ __version__ = '0.1'
 setup(
     name = 'dcuolfg',
     version = __version__,
-    packages = find_packages('src'),
-    package_dir = {'': 'src'},
+    packages = find_packages(),
     maintainer = 'Deryck Hodge',
     description = '',
     license = '',

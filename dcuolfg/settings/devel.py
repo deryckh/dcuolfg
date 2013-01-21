@@ -5,6 +5,7 @@
 Devel-only settings.
 """
 
+from dcuolfg.settings.common import *
 import os.path
 
 SOURCE_ROOT = os.path.realpath('.')
