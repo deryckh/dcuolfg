@@ -10,7 +10,7 @@ import unittest
 
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-from sorl.thumbnail import ImageField
+from django.db import models
 
 from dcuolfg.characters.models import Character
 from dcuolfg.characters.tests.utils import make_player
@@ -247,7 +247,7 @@ class TestCharacterModel(unittest.TestCase):
         hidden away behind the model, admin, or form interactions.
         """
         toon = Character(name='ToonWithImage')
-        img = ImageField('toon_with_image.png')
+        img = models.ImageField('toon_with_image.png')
         toon.image = img
         self.assertEqual(img, toon.image)
 

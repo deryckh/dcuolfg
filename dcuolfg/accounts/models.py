@@ -8,7 +8,6 @@ Models for user account profiles.
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from sorl.thumbnail import ImageField
 
 from dcuolfg.characters.models import Character
 
@@ -21,7 +20,7 @@ class Profile(models.Model):
     about = models.TextField(_('about'), blank=True)
     location = models.CharField(_('location'), max_length=100, blank=True)
     web = models.URLField(_('web'), blank=True, verify_exists=False)
-    image = ImageField(
+    image = models.ImageField(
         _('image'), upload_to='img/profiles/%Y/%m/%d', blank=True)
     browsing_as = models.ForeignKey(
         Character, blank=True, null=True, verbose_name=_('browsing as'))

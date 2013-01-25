@@ -7,15 +7,13 @@ Setup admin for missions app.
 
 from django.contrib import admin
 
-from sorl.thumbnail.admin import AdminImageMixin
-
 from dcuolfg.missions.models import (
     Location,
     Mission,
 )
 
 
-class LocationAdmin(AdminImageMixin, admin.ModelAdmin):
+class LocationAdmin(admin.ModelAdmin):
     """Admin class for Location."""
     prepopulated_fields = {'slug': ('name',)}
 

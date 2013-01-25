@@ -12,6 +12,7 @@ lib
 local
 include
 media/cache
+media/img/locations
 ID
 TAGS
 tags

@@ -30,6 +30,14 @@ CACHES = {
 ACCOUNT_ACTIVATION_DAYS = 7
 AUTH_PROFILE_MODULE = 'accounts.Profile'
 
+#Thumbnail image handling
+THUMBNAIL_ALIASES = {
+    '': {
+        'location': {'size': (230, 120), 'crop': True},
+        'mission': {'size': (500, 200), 'crop': True},
+    },
+}
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,8 +61,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'registration',
-    'sorl.thumbnail',
     'debug_toolbar',
+    'easy_thumbnails',
     'dcuolfg.accounts',
     'dcuolfg.characters',
     'dcuolfg.missions',

@@ -6,9 +6,8 @@
         <h2 class="headline">{{ mission }}</h2>
         <div class="yui3-g">
             <div class="yui3-u-1-4 mission-about">
-            {% thumbnail mission.location.image "x400" crop="right" as img %}
-               <img src="{{ MEDIA_URL }}{{ img.url }}" alt="" />
-            {% endthumbnail %}
+               <img src="{{ MEDIA_URL }}{{ mission.location.image|thumbnail_url:'mission' }}"
+                    alt="" />
                 <div class="about">
                     {{ mission.about }}
                 </div>

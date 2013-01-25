@@ -8,7 +8,7 @@ Tests for Profile objects in dcuolfg.
 import unittest
 
 from django.core.exceptions import ValidationError
-from sorl.thumbnail import ImageField
+from django.db import models
 
 from dcuolfg.accounts.models import Profile
 from dcuolfg.characters.models import Character
@@ -90,7 +90,7 @@ class TestProfileModel(unittest.TestCase):
         hidden away behind the model, admin, or form interactions.
         """
         profile = Profile()
-        img = ImageField('profile_image.png')
+        img = models.ImageField('profile_image.png')
         profile.image = img
         self.assertEqual(img, profile.image)
 

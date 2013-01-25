@@ -7,17 +7,11 @@ Setup admin for character app.
 
 from django.contrib import admin
 
-from sorl.thumbnail.admin import AdminImageMixin
-
 from dcuolfg.characters.models import (
     Character,
     LFGRequest,
 )
 
 
-class CharacterAdmin(AdminImageMixin, admin.ModelAdmin):
-    """Admin class for Character."""
-    pass
-
-admin.site.register(Character, CharacterAdmin)
+admin.site.register(Character)
 admin.site.register(LFGRequest)

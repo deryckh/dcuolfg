@@ -7,7 +7,6 @@ Models for missions in DCUO LFG.
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from sorl.thumbnail import ImageField
 
 from dcuolfg.missions.managers import MissionManager
 
@@ -17,7 +16,7 @@ class Location(models.Model):
 
     name = models.CharField(max_length=100)
     slug = models.SlugField()
-    image = ImageField(
+    image = models.ImageField(
         _('image'), upload_to='img/locations/%Y/%m/%d', blank=True)
 
     class Meta:

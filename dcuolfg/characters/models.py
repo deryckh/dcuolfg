@@ -14,7 +14,6 @@ from django.core.validators import (
 )
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from sorl.thumbnail import ImageField
 
 from dcuolfg.characters.managers import CharacterManager
 from dcuolfg.missions.models import Mission
@@ -65,7 +64,7 @@ class Character(models.Model):
     skill_points = models.IntegerField(
         _('skill_points'), blank=True, null=True, default=0)
     league = models.CharField(_('league'), blank=True, max_length=100)
-    image = ImageField(
+    image = models.ImageField(
         _('image'), upload_to='img/characters/%Y/%m/%d', blank=True)
     is_main = models.BooleanField(_('is_main'), default=False)
     lfg = models.BooleanField(_('lfg'), default=False)

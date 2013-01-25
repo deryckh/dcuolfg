@@ -8,7 +8,7 @@ Tests for attributes on Mission objects.
 import unittest
 
 from django.core.exceptions import ValidationError
-from sorl.thumbnail import ImageField
+from django.db import models
 
 from dcuolfg.missions.models import (
     Location,
@@ -118,7 +118,7 @@ class TestMissionModel(unittest.TestCase):
         hidden away behind the model, admin, or form interactions.
         """
         location = Location()
-        img = ImageField('location_image.png')
+        img = models.ImageField('location_image.png')
         location.image = img
         self.assertEqual(img, location.image)
 
