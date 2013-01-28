@@ -6,7 +6,7 @@ html {
   height: 100%;
 }
 body {
-  color: #FFF;
+  color: #4;
   width:100%;
   height: 100%;
   font-family: Helvetica, Arial, Tahoma, sans-serif;
@@ -81,131 +81,44 @@ form input {
   text-align: right;
   line-height: 250%;
   padding: 0 10px;
-  margin: 0 0 10px 0;
-  border-bottom: 1px solid #BDE7FD;
+  margin: 0;
+  border-bottom: 1px solid #020C15;
 }
 #wrap {
   min-height: 100%;
-  background-color: #020C15;
-}
-
-/** General stylistic flourishes ***/
-.bggrade {
-  /** XXX: still need to fix this for all browser. */
-  background-image: -webkit-linear-gradient(top, #009DD8, #022D4D);
-  background-image: -moz-linear-gradient(top, #009DD8, #022D4D);
-}
-.highlight {
-  font-weight: bold;
-  font-style: italic;
-  background: #022D4D;
-  padding: 2px 4px;
-  border-radius: 2px;
-}
-.promo {
+  background-color: #FFF;
   text-align: center;
-  margin: 25px 0 0 0;
+}
+#pageframe {
+  border-left: 15px solid #020C15;
+  border-right: 15px solid #020C15;
 }
 
 /** Content ************************/
-#blurb {
-  text-align: right;
-  padding: 0 0 25px 0;
-}
-#blurb p {
-  width: 70%;
-  line-height: 175%;
-  margin: 30px 0 0 25px;
-}
-.blurb-row {
-  height: 350px;
-  width: 95%;
-  background-color: #009DD8;
-  border: 1px solid #BDE7FD;
-  margin: 0 auto 5px auto;
-  padding: 10px;
-}
-h2.headline {
-  position: relative;
-  left: -30px;
-  display: table;
-  background: #CE0014;
-  text-align: right;
-  line-height: 120%;
-  padding: 1px 5px 0 30px;
-}
-#register img {
-  float: left;
-}
-.error {
-  color: red;
-}
-.featured {
-  background: #009DD8;
-  border: 1px groove #020C15;
-  overflow: hidden;
-  margin: 0 1px;
-  height: 300px;
-  padding: 3px 0 0 0;
-  width: 97%;
-}
-.featured .about,
-.featured .featured-lfg {
-  margin: 15px 10px 15px 10px;
-}
-.about {
-  font-style: italic;
-  color: #020C15;
-}
-.featured-lfg a,
-.featured-lfg a:link,
-.promo a,
-.promo a:link {
-  color: #022D4D;
-  text-decoration: underline;
-  padding: 1px 3px;
-}
-.featured-lfg a:link:hover,
-.featured-lfg a:visited:hover,
-.promo a:link:hover,
-.promo a:visited:hover {
-  background: #022D4D;
-  color: #FFF;
-  font-weight: normal;
-}
-.mission-index {
-  background: #009DD8;
-  height: inherit;
-}
-.mission-about {
-  overflow: hidden;
-}
-.mission-about img {
-  position: relative;
-  left: -170px;
-}
-.mission-lfg {
-  width: 95%;
-  margin: auto;
-}
-
-/* LFG tools
-******************************/
-.lfg-info {
-  margin: 15px 0;
-  background-image: -webkit-linear-gradient(top, #022D4D, #009DD8);
-  background-image: -moz-linear-gradient(top, #022D4D, #009DD8);
-  border-radius: 5px;
-}
-.lfg-info p {
+#content {
   text-align: center;
+  padding: 10px 0 25px 0;
+  border-left: 2px solid #999;
+  border-right: 2px solid #999;
 }
-.lfg-heading p {
-  width: 90%;
-  margin: 10px auto;
-  font-size: 1em;
-  color: #009DD8;
+#content p {
+  width: 70%;
+  line-height: 150%;
+  margin: 15px 0 0 100px;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
-.lfg-row {
-  border-top: 1px solid #CCC;
+#eventroll {
+  background: #e9f1f3;
+  border: 1px groove #020C15;
+  border-radius: 10px;
+  width: 85%;
+  padding: 0 0 100px 0;
+}
+.event {
+  overflow: hidden;
+  margin: 15px 20px 10px 40px;
+  padding: 0 0 15px 0;
+  width: 80%;
+  border-bottom:1px #CCC solid;
 }

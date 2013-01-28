@@ -1,30 +1,25 @@
 {% load thumbnail %}
-    <div class="yui3-g" id="blurb">
+    <div class="yui3-g" id="content">
       <div class="yui3-u-2-5">
           {% include "logo.html" %}
-      </div>
-      <div class="yui3-u-3-5">
           <p>Finding a group in <em>DCUO</em> should be easier! Queuing for
              randoms is nice for surprise runs, but sometimes you want to
              know what you're getting into.  This site is a "looking for
              group" tool to help players in <em>DC Universe Online</em> find
              each other.</p>
       </div>
-    </div>
-
-    <div class="yui3-g blurb-row bggrade" id="blurb-locations">
-      <div class="yui3-u-1">
-        <h2 class="headline">Locations</h2>
-        <div class="yui3-g">
+      <div class="yui3-u-3-5">
+        <div id="eventroll">
         {% for mission in missions %}
-            <div class="yui3-u-1-{{ mission_count }}">
-                <div class="featured">
+            <div class="yui3-g">
+                <div class="event">
                     <a href="{{ mission.get_absolute_url }}">
                         <img src="{{ MEDIA_URL }}{{ mission.location.image|thumbnail_url:'location' }}"
                           alt="" />
                     </a>
-                    <div>{{ mission }}</div>
-                    <div class="featured-lfg">
+                    <div><p>{{ mission }}</p></div>
+                    <div class="event-lfg">
+                        <p>
                         {% with mission.requests.count as count %}
                         Currently
                         <a href="{{ mission.get_absolute_url }}">{{ count }}
@@ -32,19 +27,14 @@
                         LFG for this {{ mission.num_players }} person
                         {{ mission.get_mission_type_display|lower }}.
                         {% endwith %}
+                        </p>
                     </div>
                     <div class="about">
-                        {{ mission.about }}
+                        <p>{{ mission.about }}</p>
                     </div>
-                </div> <!-- Close .featured -->
+                </div> <!-- Close .event -->
             </div>
         {% endfor %}
-        </div>
-      </div>
-    </div>
-
-    <div class="yui3-g blurb-row bggrade" id="blurb-toons">
-      <div class="yui3-u-1">
-        <h2 class="headline">Characters</h2>
+        </div> <!-- end #eventroll -->
       </div>
     </div>
