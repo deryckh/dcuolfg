@@ -2,7 +2,7 @@
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
-MMOLFG site-wide views.
+Site-wide views.
 """
 
 from django.shortcuts import render

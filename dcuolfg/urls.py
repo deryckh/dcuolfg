@@ -10,22 +10,23 @@ from django.conf.urls.defaults import (
     include,
     patterns,
     url,
-)
+    )
 
-from dcuolfg import views
+from dcuolfg.views import (\
+    dev,
+    main,
+    )
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', '{{ project_name }}.views.home', name='home'),
-    # url(r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
     (r'^accounts/', include('dcuolfg.accounts.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/$', dev.api, name='api'),
     url(r'missions/', include('dcuolfg.missions.urls')),
-    url(r'^$', views.index, name='home'),
+    url(r'^$', main.index, name='home'),
 )
 
 if settings.DEBUG:
