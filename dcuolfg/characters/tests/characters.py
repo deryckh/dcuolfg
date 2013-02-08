@@ -10,7 +10,10 @@ import unittest
 
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-from django.db import models
+from django.db import (
+    IntegrityError,
+    models,
+    )
 
 from dcuolfg.characters.models import Character
 from dcuolfg.characters.tests.utils import make_player
@@ -19,26 +22,24 @@ from dcuolfg.characters.tests.utils import make_player
 class TestCharacterModel(unittest.TestCase):
     """Tests to ensure expected attributes for Character objects."""
 
-    def test_character_player(self):
-        """Each Character should have a player attribute."""
-        fred = User(username='fred')
-        toon = Character(name='Gazorbeam', server=0, player=fred)
-        self.assertEqual(fred, toon.player)
+    def test_character_player_constraint(self):
+        """Characters should not be created without a player."""
+        toon = Character(name='Gazorbeam', server=0)
+        with self.assertRaises(ValidationError) as err:
+            toon.full_clean()
+        expected_message = 'This field cannot be null.'
+        message_list = err.exception.message_dict.get('player')
+        self.assertEqual(expected_message, message_list[0])
 
     def test_character_player_has_characters(self):
-        """Every user who is a player should have characters."""
+        """Players should be able to have multiple characters."""
         player = make_player()
         toon = Character(name='funbar foo', server=0, player=player)
-        another_toon = Character(name='flexbar fofo', server=0, player=player)
+        another_toon = Character(
+            name='flexbar fofo', server=0, player=player)
         expected_toons = [toon, another_toon]
         actual_toons = list(player.characters.all())
         self.assertEqual(expected_toons.sort(), actual_toons.sort())
-
-    def test_character_name(self):
-        """Each Character instance should have a name attribute."""
-        name = 'superdoopertoon'
-        toon = Character(name=name)
-        self.assertEqual(name, toon.name)
 
     def test_character_name_length(self):
         """Character names cannot be over 75 characters long."""
@@ -74,13 +75,6 @@ class TestCharacterModel(unittest.TestCase):
         toon.full_clean()
         self.assertEqual(name, toon.name)
 
-    def test_character_server(self):
-        """Each Character lives on a server."""
-        server = 0
-        toon = Character(name='foobar', server=server)
-        self.assertEqual(server, toon.server)
-        self.assertEqual('USPS3', toon.get_server_display())
-
     def test_character_server_required(self):
         """You should not be able to create a chracter without a server."""
         player = make_player()
@@ -101,10 +95,21 @@ class TestCharacterModel(unittest.TestCase):
         toon = Character(name='YourBiggestFan')
         self.assertEqual(None, toon.get_server_value('jhdbhjbdehjb'))
 
-    def test_character_role(self):
-        """Each Character has a role when created."""
-        toon = Character(name='NewHero', role=0)
-        self.assertEqual(0, toon.role)
+    def test_character_name_unique_per_server(self):
+        """Characters should have unique names per server."""
+        name = 'Dusktrike'
+        toon = Character(
+            name=name, server=0, player=make_player(), role=1, powerset=2)
+        # save() is required for this test, so toon 1 is persistent.
+        toon.save()
+        self.assertEqual(name, toon.name)
+        second_toon = Character(
+            name=name, server=0, player=make_player(), role=0, powerset=1)
+        with self.assertRaises(IntegrityError) as err:
+            second_toon.save()
+        expected_message = (
+            'columns server, name are not unique')
+        self.assertEqual(expected_message, err.exception.message)
 
     def test_character_role_required(self):
         """You should not be able to create a character without a role."""
@@ -115,11 +120,6 @@ class TestCharacterModel(unittest.TestCase):
         expected_message = 'This field cannot be null.'
         message_list = err.exception.message_dict.get('role')
         self.assertEqual(expected_message, message_list[0])
-
-    def test_character_powerset(self):
-        """Characters have a powerset attribute when created."""
-        toon = Character(name='SomeToon', powerset=0)
-        self.assertEqual(0, toon.powerset)
 
     def test_character_powerset_required(self):
         """You should not be able to create a Character without a powerset."""
@@ -250,27 +250,3 @@ class TestCharacterModel(unittest.TestCase):
         img = models.ImageField('toon_with_image.png')
         toon.image = img
         self.assertEqual(img, toon.image)
-
-    def test_character_date_added(self):
-        """A character should have a date_added attribute when added."""
-        toon = Character(name='SomeoneAdded')
-        self.assertIsInstance(toon.date_added, datetime.datetime)
-
-    def test_character_update_date_added(self):
-        """You should be able to update the date added."""
-        toon = Character(name='SomeToon')
-        older_date = datetime.datetime.now() - datetime.timedelta(7)
-        toon.date_added = older_date
-        self.assertEqual(older_date, toon.date_added)
-
-    def test_character_date_updated(self):
-        """A Character should have a date_updated when created."""
-        toon = Character(name='MeToon')
-        self.assertIsInstance(toon.date_updated, datetime.datetime)
-
-    def test_character_update_date_updated(self):
-        """You should be able to update Character.date_updated."""
-        toon = Character(name='GazerBeam')
-        new_date = datetime.datetime.now() + datetime.timedelta(14)
-        toon.date_updated = new_date
-        self.assertEqual(new_date, toon.date_updated)
