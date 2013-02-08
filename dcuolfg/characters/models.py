@@ -1,4 +1,4 @@
-# Copyright 2012 Deryck Hodge.  This software is licensed under the
+# Copyright 2012-2013 Deryck Hodge.  This software is licensed under the
 # GNU Lesser General Public License version 3 (see the file LICENSE).
 
 """
@@ -55,7 +55,8 @@ class Character(models.Model):
     role = models.IntegerField(_('role'), choices=CHARACTER_ROLE_CHOICES)
     powerset = models.IntegerField(
         _('powerset'), choices=CHARACTER_POWERSET_CHOICES)
-    description = models.TextField(_('description'), blank=True)
+    description = models.TextField(_('description'), blank=True,
+        help_text=_('A short blurb describing your toon.'))
     level = models.IntegerField(
         _('level'), blank=True, null=True, default=1,
         validators=[MinValueValidator(0), MaxValueValidator(30)])
@@ -97,15 +98,6 @@ class Character(models.Model):
     def __unicode__(self):
         """Used to describe each object in admin."""
         return u'%s: %s' % (self.get_server_display(), self.name)
-
-    def get_server_value(self, server_name):
-        """Return the server value to store based on server name."""
-        server_value = [
-            srv[0] for srv in self.CHARACTER_SERVER_CHOICES
-            if srv[1] == server_name]
-        if len(server_value) == 1:
-            return server_value[0]
-        return None
 
 
 class CharacterVote(models.Model):

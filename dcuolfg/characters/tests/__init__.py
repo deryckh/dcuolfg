@@ -9,11 +9,17 @@ import unittest
 
 from dcuolfg.characters.tests.characters import TestCharacterModel
 from dcuolfg.characters.tests.lfg import TestLFGRequest
+from dcuolfg.characters.tests.views import (
+	TestCharacterBrowsing,
+	TestCharacterViewFunctions,
+)
 from dcuolfg.characters.tests.votes import TestCharacterVotes
 
 
 UNIT_TESTS = (
+	TestCharacterBrowsing,
     TestCharacterModel,
+    TestCharacterViewFunctions,
     TestCharacterVotes,
     TestLFGRequest,
 )

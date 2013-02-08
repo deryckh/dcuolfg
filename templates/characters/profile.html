@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}DCUO LFG | Latest characters {% endblock title %}
+{% block content %}
+    <div class="yui3-g" id="content">
+      <div class="yui3-u-2-5">
+          {% include "logo.html" %}
+          <p>Finding a group in <em>DCUO</em> should be easier! Queuing for
+             randoms is nice for surprise runs, but sometimes you want to
+             know what you're getting into.  This site is a "looking for
+             group" tool to help players in <em>DC Universe Online</em> find
+             each other.</p>
+      </div>
+      <div class="yui3-u-3-5">
+        <div id="eventroll">
+            <div class="yui3-g">
+                <div class="event yui3-u-1">
+                    <div><strong>Name:</strong> {{ character.name }}</div>
+                    <div><strong>Server:</strong>
+                      {{ character.get_server_display }}</div>
+                    <div><strong>Power:</strong>
+                      {{ character.get_powerset_display }}</div>
+                </div> <!-- Close .event -->
+            </div>
+        </div> <!-- end #eventroll -->
+      </div>
+    </div>
+{% endblock content %}
