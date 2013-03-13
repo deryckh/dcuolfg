@@ -8,6 +8,10 @@ Devel-only settings.
 from dcuolfg.settings.common import *
 import os.path
 
+DEBUG_TOOLBAR_CONFIG = {
+	'INTERCEPT_REDIRECTS': False,
+}
+
 SOURCE_ROOT = os.path.realpath('.')
 TEMPLATE_DIRS = (
     '%s/templates' % SOURCE_ROOT,
