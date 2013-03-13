@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}DCUO LFG | Add a Character {% endblock title %}
+{% block title %}DCUO LFG | Character Successfully Deleted! {% endblock title %}
 {% block content %}
     <div class="yui3-g" id="content">
       <div class="yui3-u-2-5">
@@ -14,10 +14,7 @@
         <div id="eventroll">
             <div class="yui3-g">
                 <div class="event yui3-u-1">
-                    <form action="." method="post">{% csrf_token %}
-                    {{ form.as_p }}
-                    <p><input type="submit" value="Submit" /></p>
-                    </form>
+                    <p>You character has been successfully delete.</p>
                 </div> <!-- Close .event -->
             </div>
         </div> <!-- end #eventroll -->

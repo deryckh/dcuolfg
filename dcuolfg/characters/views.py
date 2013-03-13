@@ -59,6 +59,24 @@ def add_character(request):
     }
     return render(request, 'characters/add.html', data)
 
+@login_required
+def delete_character(request, server, name):
+    """A view for a player to delete a character."""
+
+    server_value = _get_server_value_from_name(server)
+    if server_value is None:
+        raise Http404
+
+    character = get_object_or_404(Character, server=server_value, name=name)
+    if request.POST:
+        character.delete()
+        return HttpResponseRedirect(reverse('delete_character_success'))
+
+    data = {
+        'character': character,
+    }
+    return render(request, 'characters/delete.html', data)
+
 def character_profile(request, server, name):
     """Render a profile view for a character."""
 
@@ -71,17 +89,3 @@ def character_profile(request, server, name):
         'character': character,
     }
     return render(request, 'characters/profile.html', data)
-
-def delete_character(request, server, name):
-    """A view for a player to delete a character."""
-
-    server_value = _get_server_value_from_name(server)
-    if server_value is None:
-        raise Http404
-
-    character = get_object_or_404(Character, server=server_value, name=name)
-    character.delete()
-    data = {
-        'msg': 'Character successfully deleted.'
-    }
-    return render(request, 'characters/delete.html', data)

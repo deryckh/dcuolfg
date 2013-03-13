@@ -9,6 +9,7 @@ from django.conf.urls.defaults import (
     patterns,
     url,
 )
+from django.views.generic.simple import direct_to_template
 
 from dcuolfg.characters import views
 
@@ -16,6 +17,9 @@ from dcuolfg.characters import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='characters_index'),
     url(r'^add/$', views.add_character, name='add_character'),
+    url(r'^delete/success/$', direct_to_template,
+        {'template': 'characters/delete_success.html'},
+        name='delete_character_success'),
     url(r'^(?P<server>[-\w]+)/(?P<name>[-\w]+)/$', views.character_profile,
         name='character_profile'),
     url(r'^(?P<server>[-\w]+)/(?P<name>[-\w]+)/delete/$',

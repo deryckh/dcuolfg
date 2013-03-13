@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}DCUO LFG | Add a Character {% endblock title %}
+{% block title %}DCUO LFG | Delete Character: {{ character }} {% endblock title %}
 {% block content %}
     <div class="yui3-g" id="content">
       <div class="yui3-u-2-5">
@@ -14,9 +14,15 @@
         <div id="eventroll">
             <div class="yui3-g">
                 <div class="event yui3-u-1">
+                    <h3>Are you sure you want to delete this character?</h3>
+                    <div><strong>Name:</strong> {{ character.name }}</div>
+                    <div><strong>Server:</strong>
+                      {{ character.get_server_display }}</div>
+                    <div><strong>Power:</strong>
+                      {{ character.get_powerset_display }}</div>
                     <form action="." method="post">{% csrf_token %}
-                    {{ form.as_p }}
-                    <p><input type="submit" value="Submit" /></p>
+                    <p><input type="submit" name="submit"
+                        value="Yes, Delete {{ character.name }}" /></p>
                     </form>
                 </div> <!-- Close .event -->
             </div>
